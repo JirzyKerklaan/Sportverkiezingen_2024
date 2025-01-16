@@ -1,0 +1,87 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: heading_text_cat1
+            field:
+              type: text
+              display: 'Sport(st)er (18+)'
+          -
+            handle: sporter_name
+            field:
+              type: text
+              display: 'Naam Sport(st)er'
+              instructions: Naam
+          -
+            handle: sporter_sport
+            field:
+              type: text
+              display: 'Sport Sport(st)er'
+              instructions: Sport
+          -
+            handle: heading_text_cat2
+            field:
+              type: text
+              display: Sporttalent
+          -
+            handle: sporttalent_name
+            field:
+              type: text
+              display: 'Naam Sporttalent'
+              instructions: Naam
+          -
+            handle: sporttalent_sport
+            field:
+              type: text
+              display: 'Sport sporttalent'
+              instructions: Sport
+          -
+            handle: heading_text_cat3
+            field:
+              type: text
+              display: Sportploeg
+          -
+            handle: sportclub_name
+            field:
+              type: text
+              display: 'Naam sportploeg'
+              instructions: Naam
+          -
+            handle: sportclub_sport
+            field:
+              type: text
+              display: 'Sport sportploeg'
+              instructions: Sport
+          -
+            handle: heading_text_cat4
+            field:
+              type: text
+              display: 'Jouw gegevens'
+          -
+            handle: name
+            field:
+              type: text
+              display: Naam
+              instructions: Naam
+              validate:
+                - required
+          -
+            handle: email
+            field:
+              input_type: email
+              type: text
+              display: 'Uw e-mailadres'
+              instructions: E-mailadres
+              validate:
+                - required
+          -
+            handle: complies
+            field:
+              options:
+                accept: '<span>Ja , ik ga akkoord met de <a href="/spelregels">spelregels</a> van de sportverkiezingen 2024.<span>'
+              type: checkboxes
+              display: 'Accepteer spelregels'
+              instructions: '&nbsp;'

@@ -1,0 +1,9 @@
+{{#
+	@name Page
+	@desc The default page template loading in the pagebuilder blocks
+#}}
+<main id="page-content">
+    {{ page_builder scope="block" }}
+        {{ partial src="page_builder/{type}" }}
+    {{ /page_builder }}
+</main>

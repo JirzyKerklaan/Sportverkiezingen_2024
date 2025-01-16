@@ -1,0 +1,140 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: name
+        field:
+          display: Naam
+          type: text
+          validate:
+            - required
+          localizable: true
+          width: 50
+          instructions_position: above
+          listable: hidden
+          input_type: text
+          antlers: false
+          instructions: 'Je naam'
+          placeholder: Naam
+          visibility: visible
+          always_save: false
+      -
+        handle: email
+        field:
+          display: Email
+          type: text
+          validate:
+            - required
+            - email
+          localizable: true
+          width: 50
+          instructions_position: above
+          listable: hidden
+          input_type: text
+          antlers: false
+          instructions: 'Je email'
+          placeholder: Email-address
+          visibility: visible
+          always_save: false
+      -
+        handle: subject
+        field:
+          input_type: text
+          antlers: false
+          display: Onderwerp
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          validate:
+            - required
+          instructions: 'Het onderwerp'
+          placeholder: Onderwerp
+          visibility: visible
+          always_save: false
+      -
+        handle: checkboxes_veld
+        field:
+          inline: false
+          options:
+            'Checkbox key': 'Checkbox label'
+            'Checkbox 2 key': 'Checkbox 2 label'
+          display: 'Checkboxes Veld'
+          type: checkboxes
+          icon: checkboxes
+          instructions: 'Instructies bij de checkbox'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+      -
+        handle: select_veld
+        field:
+          options:
+            'Select key 1': 'Select label 1'
+            'Select key 2': 'Select label 2'
+          multiple: false
+          clearable: false
+          searchable: false
+          taggable: false
+          push_tags: false
+          cast_booleans: false
+          display: 'Select veld'
+          type: select
+          icon: select
+          instructions: 'Jouw keuze'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+            - filled
+      -
+        handle: radio_veld
+        field:
+          options:
+            'Radio 1': 'Radio label 1'
+            'Radio 2': 'Radio label 2'
+          inline: false
+          cast_booleans: false
+          display: 'Radio Veld'
+          type: radio
+          icon: radio
+          instructions: 'Instructies bij radio veld'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+      -
+        handle: message
+        field:
+          display: Bericht
+          type: textarea
+          validate:
+            - required
+          localizable: true
+          instructions_position: above
+          listable: hidden
+          antlers: false
+          instructions: 'Je bericht'
+          placeholder: 'Type je bericht...'
+          visibility: visible
+          always_save: false
+      -
+        handle: consent
+        field:
+          inline_label: 'Ik ga er mee akkoord dat mijn gegevens worden opgeslagen en verstuurd.'
+          default: false
+          display: Toestemming
+          type: toggle
+          icon: toggle
+          listable: hidden
+          instructions_position: above
+          validate:
+            - accepted

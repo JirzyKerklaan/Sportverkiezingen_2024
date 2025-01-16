@@ -1,0 +1,245 @@
+title: Button
+fields:
+  -
+    handle: label
+    field:
+      input_type: text
+      type: text
+      localizable: true
+      listable: false
+      display: Label
+      width: 66
+      replicator_preview: false
+      instructions_position: above
+      antlers: false
+  -
+    handle: show_controls
+    field:
+      mode: toggle
+      display: 'Instellingen tonen'
+      type: revealer
+      icon: revealer
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      hide_display: false
+  -
+    handle: link_type
+    field:
+      options:
+        entry: Entry
+        url: URL
+        email: E-mail
+        tel: Telephone
+        asset: Asset
+        onclick: Onclick
+      type: button_group
+      localizable: true
+      default: entry
+      listable: false
+      display: 'Link type'
+      replicator_preview: false
+      width: 66
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      hide_display: false
+      if:
+        show_controls: 'equals true'
+  -
+    handle: target_blank
+    field:
+      type: toggle
+      localizable: true
+      width: 33
+      listable: false
+      display: 'Openen in nieuw venster?'
+      replicator_preview: false
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      default: false
+      hide_display: false
+      if:
+        show_controls: 'equals true'
+  -
+    handle: entry
+    field:
+      max_items: 1
+      mode: default
+      type: entries
+      localizable: true
+      width: 50
+      listable: false
+      display: Entry
+      replicator_preview: false
+      validate:
+        - 'required_if:{this}.link_type,entry'
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      create: true
+      hide_display: false
+      if:
+        link_type: 'equals entry'
+        show_controls: 'equals true'
+  -
+    handle: url
+    field:
+      placeholder: 'https://site.com'
+      input_type: url
+      type: text
+      localizable: true
+      listable: false
+      display: URL
+      width: 50
+      validate:
+        - 'required_if:{this}.link_type,url'
+      instructions_position: above
+      visibility: visible
+      antlers: false
+      hide_display: false
+      always_save: true
+      if:
+        link_type: 'equals url'
+        show_controls: 'equals true'
+  -
+    handle: email
+    field:
+      placeholder: info@site.com
+      input_type: email
+      type: text
+      localizable: true
+      listable: false
+      display: E-mail
+      width: 50
+      replicator_preview: false
+      validate:
+        - 'required_if:{this}.link_type,email'
+      instructions_position: above
+      visibility: visible
+      antlers: false
+      hide_display: false
+      always_save: true
+      if:
+        link_type: 'equals email'
+        show_controls: 'equals true'
+  -
+    handle: tel
+    field:
+      placeholder: '+0 (0)12 345678'
+      input_type: tel
+      type: text
+      localizable: true
+      listable: false
+      display: Telefoon
+      width: 50
+      replicator_preview: false
+      validate:
+        - 'required_if:{this}.link_type,tel'
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      antlers: false
+      hide_display: false
+      if:
+        link_type: 'equals tel'
+        show_controls: 'equals true'
+  -
+    handle: asset
+    field: common.image
+    config:
+      localizable: true
+      display: Asset
+      width: 50
+      if:
+        link_type: 'equals asset'
+        show_controls: 'equals true'
+  -
+    handle: function
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Functie
+      icon: text
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      if:
+        link_type: 'equals onclick'
+        show_controls: 'equals true'
+  -
+    handle: button_type
+    field:
+      options:
+        primary: Primary
+        secondary: Secondary
+      type: button_group
+      localizable: true
+      default: button
+      listable: false
+      display: 'Button stijl'
+      replicator_preview: false
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      hide_display: false
+      if:
+        show_controls: 'equals true'
+  -
+    handle: attr_title
+    field:
+      placeholder: 'Lees meer'
+      input_type: text
+      type: text
+      localizable: true
+      listable: false
+      display: Titel
+      width: 50
+      replicator_preview: false
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      antlers: false
+      hide_display: false
+      if:
+        show_controls: 'equals true'
+  -
+    handle: attr_aria
+    field:
+      placeholder: 'Download de PDF'
+      input_type: text
+      type: text
+      localizable: true
+      listable: false
+      display: 'Aria label'
+      width: 50
+      replicator_preview: false
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      antlers: false
+      hide_display: false
+      if:
+        show_controls: 'equals true'
+  -
+    handle: custom_class
+    field:
+      placeholder: btn--custom
+      input_type: text
+      antlers: false
+      display: 'Custom class'
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: true
+      hide_display: false
+      if:
+        show_controls: 'equals true'

@@ -1,0 +1,28 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+.block {
+    padding-top: $default-padding-top;
+    padding-bottom: $default-padding-bottom;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+.red-bg {
+    .container {
+        padding: 6rem 0;
+        background-color: $tertiary-color;
+        padding-right: var(--gutters-md, 1rem);
+        padding-left: var(--gutters-md, 1rem);
+
+        @include mobile() {
+            padding: 4rem 0;
+            padding-right: var(--gutters-xs, 1rem);
+            padding-left: var(--gutters-xs, 1rem);
+            background-color: $tertiary-color;
+        }
+    }
+}

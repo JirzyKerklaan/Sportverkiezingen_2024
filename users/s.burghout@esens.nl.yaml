@@ -1,0 +1,15 @@
+super: true
+name: Sybren
+id: 56c15878-20fd-467d-9b4c-392ae1c18f73
+password_hash: $2y$10$H7RFFfM79Ro44pd61sxsXuB8K8NZwQr3/Fjg2gBpLfJfHZnOVb6IO
+preferences:
+  collections:
+    pages:
+      after_save: continue_editing
+    submissions:
+      columns:
+        - title
+        - email
+        - sportperson
+        - slug
+        - status

@@ -1,0 +1,15 @@
+<style>
+    .block__maps--{{ id }} iframe {
+        height: {{ px_height | rem }}rem;
+        width: 100%;
+    }
+    @media (max-width: 760px) {
+        .block__maps--{{ id }} iframe {
+            height: {{ px_height_mob | rem }}rem;
+            width: 100%;
+        }
+    }
+</style>
+<div class="block__maps block__maps--{{ id }}">
+    {{ embed_iframe }}
+</div>

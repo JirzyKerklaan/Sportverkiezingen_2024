@@ -1,0 +1,75 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+// Show/hide helpers
+.hidden, [hidden], [x-cloak] {
+    display:  none;
+}
+@include mobile {
+    [x-cloak="mobile"] {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 760px){
+    .hide-mob {
+        display: none!important;
+    }
+    .mobile {
+        display: block;
+    }
+}
+@media screen  and (min-width: 761px) and (max-width: 1024px){
+    .hide-tab {
+        display: none!important;
+    }
+    .mobile {
+        display: none;
+    }
+}
+@media screen and (min-width: 1025px){
+    .hide-desk {
+        display: none!important;
+    }
+    .mobile {
+        display: none;
+    }
+}
+
+// Spacing
+.less-space {
+    &-bottom {
+        margin-bottom: 0;
+    }
+    &-top {
+        margin-bottom: 0;
+    }
+}
+
+// Display
+.display-block { display: block; }
+.flex { display: flex; }
+
+
+// Alignment
+.align-mid { align-self: center; }
+.align-bot { align-self: flex-end; }
+
+
+// Position
+.relative { position: relative; }
+
+
+// Links
+.full-link {
+    position: initial !important;
+}
+.full-link:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

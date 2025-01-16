@@ -1,0 +1,25 @@
+{{#
+	@name Header
+	@desc The sites header rendered on each page.
+#}}
+<header id="page-header" class="js-header header">
+    <div class="container">
+
+        <div class="header__branding">
+            <div class="header__logo">
+                <a href="/" rel="home" class="display-block">
+                    <img class="img"  alt="{{configuration.header_logo:alt}}" src="{{ configuration.header_logo ? configuration.header_logo : "../visuals/logo-big.png" }}" title="home">
+                </a>
+            </div><!-- .site-header__logo -->
+        </div><!-- .site-header__branding -->
+
+        {{# alpinejs mobile toggle #}}
+        <nav class="header__navigation navigation"
+            x-cloak="mobile"
+            @mousedown.outside="mobOpen = false"
+        >
+            {{ partial:navigation/main }}
+        </nav><!-- site-header__navigation -->
+
+    </div>
+</header><!-- #page-header -->

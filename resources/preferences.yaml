@@ -1,0 +1,4 @@
+locale: nl
+nav:
+  top_level:
+    'content::collections::pages': '@alias'

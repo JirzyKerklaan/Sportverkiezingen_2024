@@ -1,0 +1,102 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+// Base button
+.btn {
+    @include button-reset;
+    font-family: 'NeusaNextCondensedBold';
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 2rem;
+    text-transform: uppercase;
+    justify-content: center;
+    margin: 0;
+    min-height: 3rem;
+    line-height: 1;
+    padding: 1.25rem calc(70rem / 16) ;
+    position: relative;
+    text-decoration: none;
+    transition: all $default-timing;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+
+    &.full-width {
+        width: 100%;
+    }
+
+    @include mobile() {
+        padding: 1.25rem 1.75rem;
+        font-size: 1.25rem;
+    }
+}
+.btn:hover,
+.btn:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: inherit;
+}
+.btn:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+}
+.btn-reset {
+    @include button-reset;
+}
+
+// Style variations
+.btn--primary {
+    border-color: $btn-primary-border;
+    border-width: 2px;
+    background-color: $btn-primary-bg;
+    color: $btn-primary-text;
+    padding: .75rem 4.375rem;
+    &:hover,
+    &:focus {
+        border-color: $btn-primary-border-hover;
+        background-color: $btn-primary-bg-hover;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        color: $btn-primary-text-hover;
+    }
+}
+.btn--secondary {
+    background-color: $btn-secondary-bg;
+    color: $btn-secondary-text;
+    border: none;
+    &:hover,
+    &:focus {
+        background-color: $btn-secondary-bg-hover;
+        color: $btn-secondary-text-hover;
+    }
+}
+
+// Icon variants
+.btn--icon-left {
+    svg {
+        display: block;
+        width: 1.5rem;
+        height: auto;
+        margin-right: 1rem;
+    }
+}
+.btn--icon-right {
+    svg {
+        display: block;
+        width: 1.5rem;
+        height: auto;
+        margin-left: 1rem;
+    }
+}
+
+// Spacing
+.block__buttons a:not(:last-of-type) {
+    margin-right: 1rem;
+}

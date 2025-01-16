@@ -1,0 +1,26 @@
+//-- Color variables
+$primary-color: #faed45;
+$secondary-color: #383887;
+$tertiary-color: #f04f4d;
+
+// Primary button
+$btn-primary-border: $primary-color;
+$btn-primary-bg: $primary-color;
+$btn-primary-text: $secondary-color;
+$btn-primary-border-hover: $primary-color;
+$btn-primary-bg-hover: transparent;
+$btn-primary-text-hover: $primary-color;
+// Secondary button
+$btn-secondary-border: $tertiary-color;
+$btn-secondary-bg: $tertiary-color;
+$btn-secondary-text: #ffffff;
+$btn-secondary-border-hover: $tertiary-color;
+$btn-secondary-bg-hover: #ffffff;
+$btn-secondary-text-hover: $tertiary-color;
+
+//-- Timing and animation
+$default-timing: 250ms;
+
+// Blocks
+$default-padding-top: 2.5rem;
+$default-padding-bottom: 2.5rem;

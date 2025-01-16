@@ -1,0 +1,45 @@
+{{#
+@name Show
+@desc Overzicht van artikelen
+#}}
+
+<main id="page-detail">
+    <div class="container detail__intro">
+        <div class="row">
+            <div class="c12-xs c12-sm c12-md">
+                <div class="inner">
+                    {{ partial:navigation/breadcrumbs }}
+                    <picture>
+                        <source srcset="{{ glide :src="cover:url" format="webp"
+                            :width="{ configuration.max_width } - ({ configuration.padding } * 2)" height="512"
+                            fit="crop_focal" }}" type="image/webp">
+                        <img class="detail__intro__cover" src="{{ glide :src="cover:url"
+                            :width="{ configuration.max_width } - ({ configuration.padding } * 2)" height="512"
+                            fit="crop_focal" }}" alt="{{ cover:alt }}">
+                    </picture>
+                    <div class="detail__intro__date">{{ date | iso_format('ll') }}</div>
+                    <h1 class="detail__intro__title">{{ title }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ page_builder scope="block" }}
+    {{ partial src="page_builder/{type}" }}
+    {{ /page_builder }}
+
+    <div class="container">
+        <div class="row">
+            <div class="c12-xs c12-sm c12-md">
+                <div class="inner">
+                    <a href="/nieuws" class="btn btn--primary btn--icon-left"><svg aria-hidden="true" fill="none"
+                            stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg> Terug naar overzicht</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

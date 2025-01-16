@@ -1,0 +1,23 @@
+<label class="form__inline">
+    <input type="hidden" name="{{ handle }}" value="0">
+    <input
+        type="checkbox"
+        name="{{ handle }}"
+        value="1"
+        {{ js_attributes }}
+        {{ (!old && default) ?= 'checked' }}
+    >
+    <span>
+        {{ if inline_label }}
+            {{ trans :key="inline_label" }}
+        {{ /if }}
+
+        {{ if handle === 'consent' }}
+            {{ if configuration:privacy_statement_type == 'entry' }}
+                <a href="{{ configuration:privacy_statement_entry:url }}" target="_blank">{{ trans:strings.cookie_learn_more }}</a>
+            {{ elseif configuration:privacy_statement_type == 'pdf' }}
+                <a href="{{ configuration:privacy_statement_asset }}" target="_blank">{{ trans:strings.cookie_learn_more }}</a>
+            {{ /if }}
+        {{ /if }}
+    </span>
+</label>

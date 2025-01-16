@@ -1,0 +1,3 @@
+Sitemap: http://staging.boiler.esensdev2.nl/sitemap.xml
+User-agent: *
+Disallow:

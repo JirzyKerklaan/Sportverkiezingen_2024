@@ -1,0 +1,10 @@
+<input
+    name="{{ handle }}"
+    type="{{ input_type ?? 'text' }}"
+    {{ if instructions }}
+        id="{{ handle }}"
+    {{ /if }}
+    {{ if character_limit }}maxlength="{{ character_limit }}"{{ /if }}
+    {{ old ?= 'value="{old}"' }}
+    {{ js_attributes }}
+/>

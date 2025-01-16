@@ -1,0 +1,62 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: code_snippet_voor_in_de_head
+        field:
+          display: 'Code snippet voor in de head'
+          type: section
+          icon: section
+          instructions: 'Deze HTML word geplaatst in de HEAD tag'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+      -
+        handle: snippet_head
+        field:
+          theme: material
+          mode: htmlmixed
+          mode_selectable: false
+          indent_type: tabs
+          indent_size: 4
+          key_map: sublime
+          line_numbers: true
+          line_wrapping: true
+          display: 'Code voor in de head'
+          type: code
+          icon: code
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+      -
+        handle: code_snippet_voor_in_de_footer
+        field:
+          display: 'Code snippet voor in de footer'
+          type: section
+          icon: section
+          instructions: 'Deze HTML code word geplaats voor het sluiten van de BODY tag'
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+      -
+        handle: snippet_footer
+        field:
+          theme: material
+          mode: htmlmixed
+          mode_selectable: false
+          indent_type: tabs
+          indent_size: 4
+          key_map: sublime
+          line_numbers: true
+          line_wrapping: true
+          display: 'Code voor in de footer'
+          type: code
+          icon: code
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false

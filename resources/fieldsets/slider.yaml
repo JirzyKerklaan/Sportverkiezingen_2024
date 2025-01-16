@@ -1,0 +1,79 @@
+title: Slider
+fields:
+  -
+    handle: images
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: Afbeeldingen
+      icon: assets
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: is_autoplay
+    field:
+      default: true
+      type: toggle
+      display: 'Autoplay aanzetten?'
+      icon: toggle
+      instructions: Ja/nee
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: animation_interval
+    field:
+      default: '5000'
+      type: integer
+      display: 'Autoplay interval'
+      icon: integer
+      instructions: 'Duratie van slide in MS'
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: animation_type
+    field:
+      options:
+        slider: Slider
+        fade: Fade
+      taggable: false
+      push_tags: false
+      multiple: false
+      clearable: false
+      searchable: true
+      cast_booleans: false
+      default: slider
+      type: select
+      display: 'Soort animatie'
+      icon: select
+      instructions: 'Faden of sliden'
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: animation_speed
+    field:
+      default: '500'
+      type: integer
+      display: 'Animatie snelheid'
+      icon: integer
+      instructions: 'In MS'
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false

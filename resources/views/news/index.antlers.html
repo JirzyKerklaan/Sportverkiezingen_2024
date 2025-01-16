@@ -1,0 +1,74 @@
+{{#
+	@name Index
+	@desc Overzicht van artikelen
+#}}
+<main id="page-index">
+    {{ page_builder scope="block" }}
+        {{ partial src="page_builder/{type}" }}
+    {{ /page_builder }}
+
+   <div class="container">
+        <div class="row">
+            <div class="c12-xs c12-sm c12-md">
+                <div class="inner news">
+                    {{ collection:news as="news" paginate="10" }}
+                        {{ if no_results }}
+                            <h2 class="no-results">Er zijn geen nieuws berichten gevonden</h2>
+                        {{ else }}
+                            <div class="overview">
+                                {{ news }}
+                                    <article class="overview__item">
+                                        <div class="overview__item__inner">
+                                            <div class="overview__item__media">
+                                                <picture>
+                                                    <source srcset="{{ glide :src="cover:url" format="webp"
+                                                        width="700" height="400" fit="crop_focal" }}" type="image/webp">
+                                                    <img class="overview__item__img" src="{{ glide :src="cover:url"
+                                                        width="700" height="400" fit="crop_focal" }}" alt="{{ cover:alt }}">
+                                                </picture>
+                                            </div>
+                                            <div class="overview__item__content">
+                                                <div class="overview__item__date">{{ date | iso_format('ll') }}</div>
+                                                <h2 class="overview__item__title">{{ title }}</h2>
+                                                <div class="overview__item__excerpt">
+                                                    <p>
+                                                        {{ excerpt }}
+                                                    </p>
+                                                </div>
+                                                <div class="overview__item__footer">
+                                                    <a href="{{ url }}" class="btn btn--primary btn--icon-right full-link">
+                                                        Meer lezen
+                                                        <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                          </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                {{ /news }}
+                            </div>
+                        {{ /if }}
+
+                        {{ paginate }}
+                            {{ if prev_page || next_page }}
+                                <div class="pagination">
+                                    <a href="{{ prev_page }}" class="{{ ! prev_page ?= 'opacity-25' }}">
+                                        &larr; Terug
+                                    </a>
+                                    <a href="{{ next_page }}">
+                                        Volgende &rarr;
+                                    </a>
+                                </div>
+                            {{ /if }}
+                        {{ /paginate }}
+
+                    {{ /collection:news }}
+                    <div class="grid">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+</main>

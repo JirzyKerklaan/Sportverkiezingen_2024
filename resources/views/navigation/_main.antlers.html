@@ -1,0 +1,102 @@
+{{#
+	@name Main navigation
+	@desc The sites main navigation rendered on each page.
+#}}
+<button class="navigation__toggle mobile btn-reset" aria-controls="primary-menu"
+    x-on:click="mobOpen = !mobOpen"
+    :class="mobOpen ? 'active' : ''"
+>
+    <svg xmlns="http://www.w3.org/2000/svg" width="63" height="63" viewBox="0 0 200 200">
+        <g stroke-width="6.5" stroke-linecap="round">
+          <path
+            d="M72 82.286h28.75"
+            fill="#000064"
+            fill-rule="evenodd"
+            stroke="#000064"
+          />
+          <path
+            d="M100.75 103.714l72.482-.143c.043 39.398-32.284 71.434-72.16 71.434-39.878 0-72.204-32.036-72.204-71.554"
+            fill="none"
+            stroke="#000064"
+          />
+          <path
+            d="M72 125.143h28.75"
+            fill="#000064"
+            fill-rule="evenodd"
+            stroke="#000064"
+          />
+          <path
+            d="M100.75 103.714l-71.908-.143c.026-39.638 32.352-71.674 72.23-71.674 39.876 0 72.203 32.036 72.203 71.554"
+            fill="none"
+            stroke="#000064"
+          />
+          <path
+            d="M100.75 82.286h28.75"
+            fill="#000064"
+            fill-rule="evenodd"
+            stroke="#000064"
+          />
+          <path
+            d="M100.75 125.143h28.75"
+            fill="#000064"
+            fill-rule="evenodd"
+            stroke="#000064"
+          />
+        </g>
+      </svg>
+</button><!-- .navigation__toggle -->
+
+<div class="navigation__container"  x-show="mobOpen" x-collapse>
+    <div>
+        <ul id="primary-menu" class="navigation__list" >
+            {{ nav:main  include_home="true"  }}
+                {{# Tailwind dropdown gets enabled when the item has children #}}
+                <li class="navigation__item  {{ if is_current || is_parent }} navigation__item--current {{ /if }}"
+                    {{if children}}
+                        x-data="{ isOpen: false, timeout: null,  close(focusAfter) { if (! this.isOpen) return; this.isOpen = false; focusAfter && focusAfter.focus()} }"
+                        x-on:mouseenter="if (!isMobile()){timeout = setTimeout(() => { isOpen = true }, 50)}"
+                        x-on:mouseleave="if (!isMobile()){isOpen = false; clearTimeout(timeout)}"
+                        x-on:keydown.escape.prevent.stop="isOpen = false"
+                        x-on:focusin.window="! $refs.panel.contains($event.target) && close();"
+                    {{ /if }}
+                >
+
+                    <a class="navigation__link" href="{{ url }}"
+                        {{ if external }} target="_blank" {{ /if }}
+                        {{if children}}
+                            :class="isOpen ? 'hovered' : ''"
+                        {{/if}}
+                    >
+                        {{ title }}
+                        {{ if children }} {{svg src="down" class="navigation__item__icon"}} {{ /if }}
+                    </a><!-- . navigation__link -->
+
+                    {{ if children }}
+                        <div class="navigation__dd"
+                            x-show="isOpen"
+                            x-ref="panel"
+                            x-transition.opacity
+                            x-transition.duration.150ms
+                            x-transition.origin.top
+                            x-cloak
+                        >
+                            <ul class="navigation__dd__list">
+                                {{ *recursive children* }}
+                            </ul>
+                        </div><!-- .navigation__dd -->
+                    {{ /if }}
+
+                 </li><!-- .navigation__item -->
+                 {{ if index < 3 }}
+                 <div class="navigation__link dot">
+                    <div class="navigation__dot">
+
+                    </div>
+                </div>
+                {{ /if }}
+            {{ /nav:main }}
+        </ul><!-- .navigation__list -->
+    </div>
+
+
+</div><!-- .navigation__container -->

@@ -1,0 +1,22 @@
+{
+  "name": "statamic-collapse-fieldset",
+  "license": "MIT",
+  "description": "[![Latest Version](https://img.shields.io/github/v/release/esensdesign/statamic-collapse-fieldtype?style=flat-square)](https://github.com/esensdesign/statamic-collapse-fieldtype/releases)",
+  "main": "index.js",
+  "scripts": {
+    "development": "mix",
+    "watch": "mix watch",
+    "production": "mix --production"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "uniqid": "^5.4.0",
+    "vue": "^2.6.12",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12",
+    "resolve-url-loader": "^4.0.0"
+  }
+}

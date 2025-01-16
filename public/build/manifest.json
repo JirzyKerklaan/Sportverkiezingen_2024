@@ -1,0 +1,20 @@
+{
+  "resources/sass/styles.scss": {
+    "file": "assets/styles-02ef6e16.css",
+    "isEntry": true,
+    "src": "resources/sass/styles.scss"
+  },
+  "resources/svg/switch-checked.svg": {
+    "file": "assets/switch-checked-c730e8aa.svg",
+    "src": "resources/svg/switch-checked.svg"
+  },
+  "resources/svg/switch-unchecked.svg": {
+    "file": "assets/switch-unchecked-96a7a086.svg",
+    "src": "resources/svg/switch-unchecked.svg"
+  },
+  "resources/ts/app.ts": {
+    "file": "assets/app-b0071f83.js",
+    "isEntry": true,
+    "src": "resources/ts/app.ts"
+  }
+}

@@ -1,0 +1,78 @@
+
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+    <head>
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <!-- SEO -->
+        {{ partial:snippets/seo }}
+        <!-- Browser -->
+        {{ partial:snippets/browser_appearance }}
+        <!-- Style -->
+        {{ partial:snippets/style_config }}
+        {{ vite src="resources/sass/styles.scss" }}
+        <link rel="stylesheet" href="https://cdn.esens.nl/fonts/neusa_next/font.css">
+        <link rel="stylesheet" href="/css/custom.css">
+        <title>Stemlijst | Sportverkiezingen 2024</title>
+    </head>
+    <body class="page-votelist" x-data="{ mobOpen: false }">
+        <main id="page-content">
+            <div class="container">
+                <div class="row">
+                    <div class="c12-xs c12-sm c8-md cos2-md block">
+                        <div class="block__text">
+                            <h3>Volledige stemlijst</h3>
+                            <h1><span style="color: #FAED45;">SPORT(ST)ER, sporttalent en sportploeg van het jaar</span></h1>
+                        </div>
+                        <div class="vote-list">
+                            <div class="sporter category">
+                                <div class="block__text block--title">
+                                    <h2>Sport(st)er</h2>
+                                </div>
+                                {{ if sporter | length > 0 }}
+                                    <ul>
+                                        {{ sporter }}
+                                            <li>{{ sportperson ?: 'No Name' }}<br>{{ sportperson_sport ?: 'No Sport' }}</li>
+                                        {{ /sporter }}
+                                    </ul>
+                                {{ else }}
+                                    <p>Geen sport(st)ers gevonden.</p>
+                                {{ /if }}
+                            </div>
+                            <div class="sporttalent category">
+                                <div class="block__text block--title">
+                                    <h2>Sporttalent</h2>
+                                </div>
+                                {{ if sporttalent | length > 0 }}
+                                    <ul>
+                                        {{ sporttalent }}
+                                            <li>{{ sportperson ?: 'No Name' }}<br>{{ sportperson_sport ?: 'No Sport' }}</li>
+                                        {{ /sporttalent }}
+                                    </ul>
+                                {{ else }}
+                                    <p>Geen sporttalenten gevonden.</p>
+                                {{ /if }}
+                            </div>
+                            <div class="sportclub category">
+                                <div class="block__text block--title">
+                                    <h2>Sportclub</h2>
+                                </div>
+                                {{ if sportclub | length > 0 }}
+                                    <ul>
+                                        {{ sportclub }}
+                                            <li>{{ sportperson ?: 'No Name' }}<br>{{ sportperson_sport ?: 'No Sport' }}</li>
+                                        {{ /sportclub }}
+                                    </ul>
+                                {{ else }}
+                                    <p>Geen sportclubs gevonden.</p>
+                                {{ /if }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

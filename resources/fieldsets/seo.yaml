@@ -1,0 +1,221 @@
+title: SEO
+fields:
+  -
+    handle: section_basic
+    field:
+      type: section
+      instructions: 'Basis SEO instellingen'
+      display: Basis
+      instructions_position: above
+      listable: hidden
+      read_only: false
+  -
+    handle: seo_title
+    field:
+      input_type: text
+      type: text
+      localizable: true
+      listable: hidden
+      display: 'Pagina titel'
+      character_limit: 70
+      instructions: 'Dit paginatitel van dit item, is standaard ingesteld op de titel. Max 70 tekens inclusief de sitenaam.'
+      instructions_position: above
+      read_only: false
+      antlers: false
+  -
+    handle: seo_description
+    field: common.text_plain
+    config:
+      listable: hidden
+      display: Metabeschrijving
+      character_limit: '160'
+      instructions: 'De metabeschrijving van dit item. Maximaal 160 tekens.'
+  -
+    handle: section_advanced
+    field:
+      type: section
+      instructions: 'Geavanceerde SEO-instellingen'
+      display: Geavanceerd
+      instructions_position: above
+      listable: hidden
+      read_only: false
+  -
+    handle: seo_noindex
+    field:
+      type: toggle
+      instructions: 'verzoek crawlers om dit item niet te indexeren, sluit het ook uit van de sitemap.xml.'
+      instructions_position: below
+      listable: hidden
+      width: 50
+      display: No-index
+      read_only: false
+      default: false
+  -
+    handle: seo_nofollow
+    field:
+      type: toggle
+      instructions: 'Verzoek crawlers om geen links op deze pagina te volgen.'
+      instructions_position: below
+      listable: hidden
+      width: 50
+      display: No-follow
+      read_only: false
+      default: false
+  -
+    handle: seo_canonical_type
+    field:
+      options:
+        entry: 'Dit item'
+        current: 'Dit domein'
+        external: 'Extern domein'
+      display: 'Canonical URL'
+      type: button_group
+      default: entry
+      icon: button_group
+      instructions: 'Waar moet de Canonical URL voor dit item naartoe.'
+      listable: hidden
+      instructions_position: above
+      read_only: false
+  -
+    handle: seo_canonical_current
+    field: common.entry
+    config:
+      localizable: true
+      listable: hidden
+      display: 'Canonical URL'
+      width: 66
+      instructions: 'Als dit een item is met dubbele inhoud. Voer de originele URL voor deze inhoud in.'
+      validate:
+        - 'required_if:seo_canonical_type,current'
+      if:
+        seo_canonical_type: 'equals current'
+  -
+    handle: seo_canonical_external
+    field:
+      input_type: url
+      display: 'Canonical URL'
+      type: text
+      icon: text
+      listable: hidden
+      validate:
+        - 'required_if:seo_canonical_type,external'
+      instructions_position: above
+      read_only: false
+      antlers: false
+      if:
+        seo_canonical_type: 'equals external'
+  -
+    handle: section_og
+    field:
+      type: section
+      instructions: 'Open Graph-metatags voor delen'
+      display: 'Open Graph'
+      instructions_position: above
+      listable: hidden
+      read_only: false
+  -
+    handle: og_title
+    field:
+      input_type: text
+      type: text
+      localizable: true
+      listable: hidden
+      display: 'Titel voor delen'
+      instructions: 'Hiermee wordt de OG-titel ingevoerd, standaard ingesteld op SEO-titel of titel.'
+      instructions_position: above
+      read_only: false
+      antlers: false
+  -
+    handle: og_description
+    field: common.text_plain
+    config:
+      listable: hidden
+      display: 'Omschrijving voor delen'
+      instructions: 'De OG-Omschrijving, standaard ingesteld op metabeschrijving.'
+      width: 100
+  -
+    handle: og_image
+    field: common.image
+    config:
+      mode: grid
+      container: social_images
+      listable: hidden
+      display: 'Afbeelding voor delen'
+      instructions: 'De OG-afbeelding. Standaard ingesteld op globale site OG-afbeelding. De aanbevolen grootte is 1200px x 630px. De afbeelding wordt bijgesneden tot deze dimensie.'
+      instructions_position: below
+      width: 50
+  -
+    handle: twitter_image
+    field: common.image
+    config:
+      mode: grid
+      container: social_images
+      listable: hidden
+      display: 'Twitter afbeelding'
+      instructions: 'Deze Twitter-afbeelding. Standaard ingesteld op Twitter-afbeelding van de de site. Afbeeldingen moeten een beeldverhouding van 2:1 hebben met minimale afmetingen van 300x157. De afbeelding wordt bijgesneden tot deze dimensie.'
+      instructions_position: below
+      width: 50
+  -
+    handle: section_sitemap
+    field:
+      type: section
+      instructions: 'Sitemap instellingen'
+      display: Sitemap
+      instructions_position: above
+      listable: hidden
+      read_only: false
+  -
+    handle: sitemap_change_frequency
+    field:
+      options:
+        always: Altijd
+        hourly: 'Per uur'
+        daily: Dagelijks
+        weekly: Wekelijks
+        monthly: Maandelijks
+        yearly: Jaarlijks
+        never: Nooit
+      clearable: false
+      multiple: false
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      type: select
+      instructions: 'Hoe vaak zoekmachines moeten worden verzocht om te crawlen.'
+      instructions_position: below
+      width: 50
+      default: weekly
+      listable: hidden
+      display: 'Wijzig frequentie'
+      read_only: false
+  -
+    handle: sitemap_priority
+    field:
+      type: text
+      display: Prioriteit
+      default: 0.5
+      instructions: 'Geldige waarden variëren van 0,0 tot 1,0. Deze waarde heeft geen invloed op hoe uw pagina''s worden vergeleken met pagina''s op andere sites, het laat de zoekmachines alleen weten welke pagina''s u het belangrijkst vindt voor de crawlers.'
+      instructions_position: below
+      width: 50
+      listable: hidden
+      read_only: false
+      input_type: text
+      antlers: false
+  -
+    handle: section_schema
+    field:
+      type: section
+      instructions: 'Aangepaste JSON-ld schema-objecten'
+      display: 'JSON-ld Schema'
+      instructions_position: above
+      listable: hidden
+      read_only: false
+  -
+    handle: schema_jsonld
+    field: common.text_plain
+    config:
+      listable: false
+      display: 'JSON-ld schema'
+      instructions: 'Aangepaste JSON-ld-objecten. Wordt verpakt in de juiste scripttag.'
+      width: 100

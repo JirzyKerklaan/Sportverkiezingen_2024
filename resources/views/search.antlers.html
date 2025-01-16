@@ -1,0 +1,48 @@
+{{#
+	@name Search
+	@desc The search template showing search results, if you enable the search form partial in `views/navigation/_main.antlers.html` and the route in `routes/web.php`.
+#}}
+
+{{# Yield a title to the SEO partial. #}}
+{{ section:seo_title }}
+    {{ trans:strings.search }}
+{{ /section:seo_title }}
+
+<main id="page-content" class="page-search">
+    <div class="container">
+        <div class="row">
+
+            <div class="c12-xs c12-sm c12-md block block--search">
+                <div class="block__inner">
+
+                    {{ search:results }}
+                        {{ if !no_results }}<ul class="search-results">{{ /if }}
+                        {{ if no_results }}
+                        <p class="no-results">We hebben helaas geen zoek resultaten gevonden voor &quot;{{get:q}}&quot;...</p>
+                        {{ else }}
+                            <li class="search-result">
+
+                                <a href="{{ url }}">
+                                    <h2 class="search-result__title">{{ title }}</h2>
+                                    <div class="search-result__content">
+
+                                        {{# Sow the SEO meta description if available. #}}
+                                        {{ if seo_description }}
+                                            <p> {{ seo_description }} </p>
+                                        {{ /if }}
+                                    </div>
+                                </a>
+
+                            </li>
+                            <!-- .search-result -->
+                        {{ /if }}
+                        {{ if !no_results }}</ul>{{ /if }}
+                    {{ /search:results }}
+
+                </div>
+            </div>
+            <!-- block_content -->
+
+        </div>
+    </div>
+</main>

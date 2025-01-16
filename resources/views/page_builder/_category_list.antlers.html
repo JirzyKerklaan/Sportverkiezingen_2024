@@ -1,0 +1,60 @@
+{{#
+	@name Voting list
+	@desc The Voting list component for showing the voting list
+#}}
+
+{{# Mobile style #}}
+{{ if collapse_settings.settings_padding_bottom_m || collapse_settings.settings_padding_top_m }}
+<style>
+    @media screen and (max-width: 760px){
+    {{ if collapse_settings.settings_padding_bottom_m }}
+        .block--{{ id }} {
+            padding-bottom: {{ collapse_settings.settings_padding_bottom_m | rem}}rem !important;
+        }
+    {{ /if }}
+    {{ if collapse_settings.settings_padding_top_m }}
+        .block--{{ id }} {
+            padding-top: {{ collapse_settings.settings_padding_top_m | rem}}rem !important;
+        }
+    {{ /if }}
+    }
+</style>
+{{ /if }}
+
+{{# HTML #}}
+<div class="block block--one-column block--{{ id }} {{ collapse_settings:custom_class }}
+ {{ if collapse_settings.achtegrond_gradient !== 'null' }}{{ collapse_settings.achtergrond_gradient }}{{ /if }}"
+    style="{{ if collapse_settings:settings_bg_color }}background-color:{{ collapse_settings:settings_bg_color }};{{ /if }}
+    {{ if collapse_settings:settings_padding_top }}padding-top:{{ collapse_settings:settings_padding_top | rem }}rem;{{ /if }}
+    {{ if collapse_settings:settings_padding_bottom }}padding-bottom:{{ collapse_settings:settings_padding_bottom | rem }}rem;{{ /if }}
+">
+    <div class="container">
+        <div class="row">
+            <div class="
+                c12-xs
+                c11-md
+                cos1-md
+                ">
+                <div class="inner">
+                    <div class="category__grid">
+                        {{category_card}}
+                            <a href="/nomineren" style="text-decoration: none !important;">
+                                <div class="category__card">
+                                    <div class="category__card__image">
+                                        <picture>
+                                            <source srcset="{{ glide :src="image:url" format="webp" }}" type="image/webp">
+                                            <img class="img splide__media" src="{{ image:url }}" alt="{{ image:alt }}">
+                                        </picture>
+                                    </div>
+                                    <div class="category__card__text {{text_color}}">
+                                        <p>{{cta}}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        {{/category_card}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

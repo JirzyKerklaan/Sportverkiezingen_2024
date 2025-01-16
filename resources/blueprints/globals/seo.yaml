@@ -1,0 +1,653 @@
+sections:
+  page_titles:
+    display: 'Pagina metadata'
+    fields:
+      -
+        handle: section_title
+        field:
+          type: section
+          instructions: 'Website and pagina titels'
+          display: Titel
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: title_separator
+        field:
+          options:
+            ' | ': '|'
+            ' - ': '-'
+            ' / ': /
+            ' :: ': '::'
+            ' > ': '>'
+            ' ~ ': '~'
+          clearable: false
+          multiple: false
+          searchable: true
+          localizable: true
+          taggable: false
+          push_tags: false
+          cast_booleans: false
+          type: select
+          instructions: 'Selecteer het teken om de paginatitel en de sitenaam te scheiden.'
+          instructions_position: below
+          width: 33
+          listable: hidden
+          display: Scheidingsteken
+          read_only: false
+      -
+        handle: site_name
+        field:
+          input_type: text
+          type: text
+          localizable: true
+          listable: hidden
+          display: 'Website titel'
+          instructions: 'De titel voor de website. Standaard de app-naam van Laravel.'
+          instructions_position: below
+          width: 66
+          read_only: false
+          antlers: false
+      -
+        handle: change_page_title
+        field:
+          fields:
+            -
+              handle: collection
+              field:
+                max_items: 1
+                mode: select
+                display: Collectie
+                type: collections
+                icon: collections
+                instructions: 'De collectie waarvan u de titel wilt wijzigen.'
+                width: 33
+                listable: hidden
+                instructions_position: above
+                read_only: false
+            -
+              handle: what_to_add
+              field:
+                options:
+                  custom_text: 'Aangepaste tekst'
+                  collection_title: 'De collectie titel'
+                multiple: false
+                max_items: 1
+                clearable: false
+                searchable: false
+                taggable: false
+                push_tags: false
+                cast_booleans: false
+                display: 'Wat toe te voegen?'
+                type: select
+                icon: select
+                instructions: 'Wat toe te voegen?'
+                width: 33
+                listable: hidden
+                instructions_position: above
+                read_only: false
+            -
+              handle: custom_text
+              field:
+                input_type: text
+                antlers: false
+                display: Tekst
+                type: text
+                icon: text
+                instructions: 'De aangepaste tekst.'
+                width: 33
+                listable: hidden
+                if:
+                  what_to_add: 'equals custom_text'
+                instructions_position: above
+                read_only: false
+          mode: table
+          add_row: 'Add collection default'
+          reorderable: true
+          type: grid
+          icon: grid
+          localizable: true
+          display: 'Titel van collectie wijzigen'
+          instructions: 'Selecteer collecties waaraan u iets wilt toevoegen om deel uit te maken van de paginatitel. Bijvoorbeeld: _Invoertitel - **Verzamelingstitel** - Sitetitel_.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+      -
+        handle: section_environments_noindex
+        field:
+          type: section
+          instructions: 'Wanneer standaard noindex en nofollow.'
+          display: Omgevingen
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: noindex_local
+        field:
+          type: toggle
+          instructions_position: below
+          listable: false
+          display: Lokaal
+          width: 33
+          read_only: false
+          default: false
+      -
+        handle: noindex_staging
+        field:
+          type: toggle
+          instructions_position: below
+          listable: false
+          display: Staging
+          width: 33
+      -
+        handle: noindex_production
+        field:
+          type: toggle
+          instructions_position: below
+          listable: false
+          display: Productie
+          width: 33
+          read_only: false
+          default: false
+      -
+        handle: section_description
+        field:
+          type: section
+          instructions: 'Stel fallback-gegevens per verzameling in om te gebruiken als meta-, OG- en Twitter-beschrijvingen wanneer die velden leeg zijn.'
+          display: Beschrijvingen
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: collection_defaults
+        field:
+          fields:
+            -
+              handle: collection
+              field:
+                max_items: 1
+                mode: select
+                display: Collectie
+                type: collections
+                icon: collections
+                instructions: 'De collectie voor deze fallback.'
+                instructions_position: below
+                width: 33
+                listable: hidden
+                read_only: false
+            -
+              handle: fallback
+              field:
+                options:
+                  field: 'Aangepast veld'
+                  custom_text: 'Aangepaste tekst'
+                  page_builder: 'Eerste tekst in paginabouwer blok'
+                multiple: false
+                max_items: 1
+                clearable: false
+                searchable: false
+                taggable: false
+                push_tags: false
+                cast_booleans: false
+                display: Fallback
+                type: select
+                icon: select
+                instructions: 'Het fallback type'
+                instructions_position: below
+                width: 33
+                listable: hidden
+                read_only: false
+            -
+              handle: field_handle
+              field:
+                input_type: text
+                antlers: false
+                display: 'Veld handle'
+                type: text
+                icon: text
+                instructions: 'Het aangepaste veld handle.'
+                instructions_position: below
+                width: 33
+                listable: hidden
+                if:
+                  fallback: 'equals field'
+                read_only: false
+            -
+              handle: custom_text
+              field:
+                character_limit: '160'
+                antlers: false
+                display: 'Aangepaste tekst'
+                type: textarea
+                icon: textarea
+                instructions: 'De aangepaste tekst. Maximaal 160 tekens.'
+                instructions_position: below
+                width: 33
+                listable: hidden
+                if:
+                  fallback: 'equals custom_text'
+                read_only: false
+          mode: stacked
+          add_row: 'Collectie standaard toevoegen'
+          reorderable: true
+          display: 'Standaardinstellingen voor collectie'
+          type: grid
+          icon: grid
+          instructions: 'Stel fallback-metabeschrijvingen in voor elke collectie.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+      -
+        handle: section_hreflang
+        field:
+          type: section
+          instructions: 'Stel in voor welke sites in uw multisite een hreflang-tag moet worden gegenereerd.'
+          display: Hreflang
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: hreflang_auto
+        field:
+          type: toggle
+          display: 'Auto hreflang tags'
+          instructions: 'Genereer automatisch hreflang-tags voor alle sites.'
+          listable: hidden
+          instructions_position: above
+          width: 50
+          read_only: false
+          default: false
+  json-ld:
+    display: JSON-ld
+    fields:
+      -
+        handle: section_schema
+        field:
+          type: section
+          instructions: 'JSON-LD Schema'
+          display: 'Knowledge graph data'
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: json_ld_type
+        field:
+          options:
+            none: Geen
+            organization: Organisatie
+            person: Persoon
+            custom: Aangepast
+          default: none
+          localizable: true
+          type: button_group
+          instructions: 'Het type gegevens dat op elke pagina moet worden toegevoegd.'
+          listable: false
+          display: Type
+          instructions_position: above
+          read_only: false
+      -
+        handle: organization_name
+        field:
+          input_type: text
+          type: text
+          localizable: true
+          listable: hidden
+          display: 'Organisatie naam'
+          width: 66
+          if:
+            json_ld_type: 'equals organization'
+          validate:
+            - 'required_if:json_ld_type,organization'
+          instructions_position: above
+          read_only: false
+          antlers: false
+      -
+        handle: organization_logo
+        field: common.image
+        config:
+          localizable: true
+          listable: hidden
+          display: 'Organisatie logo'
+          instructions: 'Minimaal 112px x 112px, wordt scherp bijgesneden tot een vierkant.'
+          instructions_position: below
+          width: 33
+          if:
+            json_ld_type: 'equals organization'
+      -
+        handle: person_name
+        field:
+          listable: hidden
+          display: 'Naam van persoon'
+          width: 66
+          input_type: text
+          type: text
+          localizable: true
+          if:
+            json_ld_type: 'equals person'
+          validate:
+            - 'required_if:json_ld_type,person'
+          instructions_position: above
+          read_only: false
+          antlers: false
+      -
+        handle: json_ld
+        field:
+          type: textarea
+          instructions: 'Voeg aangepaste JSON-LD toe die op elke pagina moet komen. Dit kunnen zaken als kantooruren en contactgegevens zijn.'
+          localizable: true
+          listable: false
+          display: JSON-LD
+          validate:
+            - 'required_if:json_ld_type,custom'
+          instructions_position: above
+          read_only: false
+          antlers: false
+          if:
+            json_ld_type: 'equals custom'
+      -
+        handle: section_breadcrumbs
+        field:
+          type: section
+          instructions: 'JSON-ld Breadcrumbs'
+          display: Breadcrumbs
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: breadcrumbs
+        field:
+          type: toggle
+          instructions: 'Voeg JSON-ld breadcrumbs toe aan elk item. Aanbevolen wanneer er geen visuele broodkruimelpaden op de pagina worden weergegeven.'
+          listable: false
+          localizable: true
+          display: Breadcrumbs
+          instructions_position: above
+          read_only: false
+          default: false
+  social:
+    display: 'Delen op socials'
+    fields:
+      -
+        handle: social_images_collections
+        field:
+          mode: select
+          display: 'Generatie van afbeeldingen voor socials'
+          type: collections
+          icon: collections
+          instructions: 'Gebruik automatisch genereren van afbeeldingen voor de volgende collecties.'
+          instructions_position: below
+          listable: hidden
+          width: 50
+          read_only: false
+          if:
+            use_social_image_generation: 'equals true'
+      -
+        handle: section_og
+        field:
+          type: section
+          instructions: 'Standaardinstellingen voor delen.'
+          display: standaardinstellingen
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: og_image
+        field: common.image
+        config:
+          container: social_images
+          localizable: true
+          listable: hidden
+          display: Afbeelding
+          instructions: 'De standaard OG-afbeelding. Kan per invoer worden overschreven. De aanbevolen grootte is 1200px x 630px. De afbeelding wordt bijgesneden tot deze dimensie.'
+          instructions_position: below
+          width: 50
+      -
+        handle: twitter_image
+        field: common.image
+        config:
+          container: social_images
+          localizable: true
+          listable: hidden
+          display: 'Twitter afbeelding'
+          instructions: 'De standaard Twitter-afbeelding. Kan per invoer worden overschreven. Afbeeldingen moeten een beeldverhouding van 2:1 hebben met minimale afmetingen van 300x157. De afbeelding wordt bijgesneden tot deze dimensie.'
+          instructions_position: below
+          width: 50
+      -
+        handle: twitter_handle
+        field:
+          listable: hidden
+          display: 'Twitter username'
+          width: 50
+          input_type: text
+          type: text
+          localizable: true
+          instructions: 'De Twitter-gebruikersnaam die moet worden opgenomen in Twitter Card-tags.'
+          instructions_position: below
+          prepend: '@'
+          antlers: false
+          read_only: false
+  sitemap:
+    display: Sitemap
+    fields:
+      -
+        handle: section_sitemap
+        field:
+          type: section
+          instructions: 'Configureer de sitemap.xml'
+          display: Sitemap
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: sitemap_collections
+        field:
+          mode: select
+          type: collections
+          instructions: 'Selecteer welke collecties je wilt opnemen in de sitemap.xml.'
+          listable: hidden
+          default: pages
+          display: Collecties
+          instructions_position: above
+          read_only: false
+  trackers:
+    display: Trackers
+    fields:
+      -
+        handle: section_environments
+        field:
+          type: section
+          instructions: 'Wanneer tracker-tags moeten worden ingeladen.'
+          display: Omgevingen
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: trackers_local
+        field:
+          type: toggle
+          listable: false
+          display: Lokaal
+          width: 33
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: trackers_staging
+        field:
+          type: toggle
+          listable: false
+          display: Staging
+          width: 33
+      -
+        handle: trackers_production
+        field:
+          type: toggle
+          listable: false
+          display: Productie
+          width: 33
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: section_verification
+        field:
+          type: section
+          instructions: 'Configureer siteverificaties.'
+          display: Siteverificaties
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: use_google_site_verification
+        field:
+          type: toggle
+          instructions: 'Voeg een google-site-verificatie metatag toe aan de head.'
+          listable: false
+          display: 'Google site verificatie'
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: google_site_verification
+        field:
+          input_type: text
+          type: text
+          listable: hidden
+          width: 66
+          display: Verificatiesleutel
+          validate:
+            - 'required_if:use_google_site_verification,true'
+          if:
+            use_google_site_verification: 'equals true'
+          instructions_position: above
+          read_only: false
+          antlers: false
+      -
+        handle: section_google_trackers
+        field:
+          type: section
+          instructions: 'Configureer Google-trackers'
+          display: 'Google Trackers'
+          instructions_position: above
+          listable: hidden
+          read_only: false
+      -
+        handle: tracker_type
+        field:
+          options:
+            none: geen
+            gtag: 'Google Analytics'
+            gtm: 'Google Tag Manager'
+          default: none
+          type: button_group
+          instructions: 'Het type Google Tracker dat u op elke pagina wilt toevoegen.'
+          listable: false
+          display: 'Google Tracker type'
+          instructions_position: above
+          read_only: false
+      -
+        handle: google_analytics
+        field:
+          width: 25
+          display: 'Tracking ID'
+          input_type: text
+          type: text
+          instructions: '*Opmerking: als je IP''s niet anonimiseert, heb je toestemming voor cookies nodig in de EU.*'
+          instructions_position: below
+          listable: hidden
+          validate:
+            - 'required_if:tracker_type,gtag'
+          if:
+            tracker_type: 'equals gtag'
+          read_only: false
+          antlers: false
+      -
+        handle: anonymize_ip
+        field:
+          type: toggle
+          width: 25
+          listable: false
+          default: true
+          display: 'Anonimiseer IP''s'
+          instructions: 'Schakel dit in om te worden vrijgesteld van het vereisen van toestemming voor trackers.'
+          instructions_position: below
+          if:
+            tracker_type: 'equals gtag'
+          read_only: false
+      -
+        handle: google_tag_manager
+        field:
+          input_type: text
+          type: text
+          listable: hidden
+          width: 50
+          display: 'Tracking ID'
+          instructions_position: below
+          validate:
+            - 'required_if:tracker_type,gtm'
+          read_only: false
+          antlers: false
+          if:
+            tracker_type: 'equals gtm'
+      -
+        handle: cookiebanner
+        field:
+          display: Cookiebanner
+          type: section
+          icon: section
+          listable: hidden
+          instructions_position: above
+          read_only: false
+      -
+        handle: use_cookie_banner
+        field:
+          type: toggle
+          instructions: 'Zorg ervoor dat je je tracking scripts laad met GTM.'
+          instructions_position: above
+          listable: false
+          display: 'Cookie banner'
+          width: 50
+          read_only: false
+          default: false
+      -
+        handle: cookiepagina
+        field:
+          max_items: 1
+          mode: default
+          create: true
+          display: Cookiepagina
+          type: entries
+          icon: entries
+          width: 50
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          instructions: 'Voeg een pagina toe waar de banner naar verwijst'
+      -
+        handle: display_style
+        field:
+          options:
+            left: Link
+            right: Rechts
+          default: left
+          type: button_group
+          listable: false
+          localizable: true
+          display: 'Weergave stijl'
+          width: 50
+          instructions_position: above
+          read_only: false
+          if:
+            tracker_type: 'not none'
+            use_cookie_banner: 'equals true'
+      -
+        handle: debug_mode
+        field:
+          default: false
+          display: 'Debug modus'
+          type: toggle
+          icon: toggle
+          width: 50
+          listable: hidden
+          instructions_position: above
+          read_only: false

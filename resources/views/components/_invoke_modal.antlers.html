@@ -1,0 +1,15 @@
+{{#
+    @name Invoke modal
+    @desc The Invoke modal component.
+    @set page.article.invoke_modal
+#}}
+
+<div class="block__buttons">
+    {{ partial:components/modal :label_open="label_open" :label_close="label_close" :label_aria="label_aria" }}
+        {{ slot:content }}
+            {{ partial:typography/prose }}
+                {{ text }}
+            {{ /partial:typography/prose }}
+        {{ /slot:content }}
+    {{ /partial:components/modal }}
+</div>

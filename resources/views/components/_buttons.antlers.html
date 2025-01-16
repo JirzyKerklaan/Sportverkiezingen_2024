@@ -1,0 +1,13 @@
+{{#
+	@name Buttons
+	@desc Multiple buttons component calling in `resources/vivews/components/_button.antlers.html`.
+    @set page.article.buttons
+#}}
+
+{{ if buttons }}
+    <div class="block__buttons">
+        {{ buttons }}
+            {{ partial:components/button }}
+        {{ /buttons }}
+    </div>
+{{ /if }}

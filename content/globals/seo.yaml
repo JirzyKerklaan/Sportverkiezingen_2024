@@ -1,0 +1,27 @@
+title: SEO
+data:
+  title_separator: '|'
+  site_name: 'Sportverkiezingen 2024'
+  noindex_local: true
+  noindex_staging: true
+  noindex_production: true
+  hreflang_auto: false
+  json_ld_type: organization
+  organization_name: 'Lekker bezig schiedam'
+  organization_logo: logos/lekker-bezig-logo.png
+  breadcrumbs: true
+  og_image: img3.jpg
+  twitter_image: img3.jpg
+  sitemap_collections:
+    - pages
+  trackers_local: true
+  trackers_staging: false
+  trackers_production: true
+  use_google_site_verification: false
+  tracker_type: gtag
+  google_analytics: xxx
+  anonymize_ip: true
+  use_cookie_banner: true
+  cookiepagina: ca34cc9a-7eaf-449b-ba02-347b9f61fc29
+  display_style: left
+  debug_mode: false

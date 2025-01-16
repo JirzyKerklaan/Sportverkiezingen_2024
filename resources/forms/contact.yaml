@@ -1,0 +1,17 @@
+title: Contactformulier
+honeypot: fax
+email:
+  -
+    to: b.vrijland@esens.nl
+    from: mailer@esensdev2.nl
+    reply_to: '{{ email }}'
+    subject: 'Formulier ontvangen!'
+    html: email/form_owner
+    text: email/form_owner_text
+  -
+    to: '{{ email }}'
+    from: mailer@esensdev2.nl
+    reply_to: info@esens.nl
+    subject: 'Formulier vestuurd!'
+    html: email/form_sender
+    text: email/form_sender_text

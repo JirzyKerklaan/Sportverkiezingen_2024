@@ -1,0 +1,23 @@
+.page-votelist {
+    h1,h2,h3,h4,h5,h6,p,li {
+        color: #fff;
+        font-family: 'NeusaNextRegular';
+    }
+
+
+    .block {
+        &--title {
+            margin-top: 3rem;
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    ul > li {
+        margin-bottom: .75rem;
+    }
+
+    .vote-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

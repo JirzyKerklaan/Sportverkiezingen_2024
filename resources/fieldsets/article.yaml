@@ -1,0 +1,74 @@
+title: Content
+fields:
+  -
+    handle: article
+    field:
+      buttons:
+        - h1
+        - h2
+        - h3
+        - h4
+        - bold
+        - italic
+        - underline
+        - unorderedlist
+        - orderedlist
+        - quote
+        - superscript
+        - subscript
+        - anchor
+        - alignleft
+        - aligncenter
+        - alignright
+        - color
+        - removeformat
+      reading_time: true
+      type: bard
+      localizable: true
+      display: Content
+      replicator_preview: false
+      container: assets
+      always_save: false
+      collapse: accordion
+      remove_empty_nodes: trim
+      smart_typography: true
+      sets:
+        main:
+          display: Main
+          sets:
+            buttons:
+              display: Knoppen
+              icon: link
+              fields:
+                -
+                  import: buttons
+            image:
+              display: Afbeelding
+              icon: media-image-picture-orientation
+              fields:
+                -
+                  import: image
+            form:
+              display: Formulier
+              icon: programming-script-code
+              fields:
+                -
+                  import: form
+            whitespace:
+              display: Witruimte
+              icon: layout-page-break
+              fields:
+                -
+                  import: whitespace
+            embed_maps:
+              display: 'Google Maps'
+              icon: travel-map
+              fields:
+                -
+                  import: google_maps
+            slider:
+              display: Slider
+              icon: media-image-picture-gallery
+              fields:
+                -
+                  import: slider

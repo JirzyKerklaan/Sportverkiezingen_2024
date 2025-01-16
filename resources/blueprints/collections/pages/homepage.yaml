@@ -1,0 +1,61 @@
+hide: true
+title: Homepage
+sections:
+  main:
+    display: Globaal
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          input_type: text
+          localizable: true
+          listable: true
+          display: Titel
+          validate:
+            - required
+          instructions_position: above
+          antlers: false
+      -
+        import: page_builder
+  seo:
+    display: SEO
+    fields:
+      -
+        import: seo
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: meta
+        field:
+          type: section
+          instructions: 'De metagegevens van dit item.'
+          display: Meta
+          instructions_position: above
+          listable: hidden
+      -
+        handle: slug
+        field:
+          type: slug
+          localizable: true
+          generate: true
+          listable: hidden
+          display: Slug
+          validate:
+            - required
+            - 'new \Statamic\Rules\UniqueEntryValue({collection}, {id}, {site})'
+          instructions_position: above
+      -
+        handle: parent
+        field:
+          type: entries
+          collections:
+            - pages
+          max_items: 1
+          listable: false
+          localizable: true
+          instructions_position: above
+          mode: default
+          create: true

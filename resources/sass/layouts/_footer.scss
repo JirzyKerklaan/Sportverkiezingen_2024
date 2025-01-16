@@ -1,0 +1,131 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+/*
+  Let the footer stay where it belongs
+*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; // Use min height because of the fixed header.
+    overflow-x: hidden;
+}
+.footer {
+    margin-top: auto;
+    padding: 2rem 0 20rem;
+    position: relative;
+    background-color: var(--footer-bg-c);
+    color: var(--footer-text-c);
+
+    // Footer logo
+    &__logo {
+        max-width: var(--footer-logo-mw);
+
+        @media screen and (min-width: 1250px) {
+            margin-top: -5rem;
+        }
+
+        @include vw {
+        }
+        @include fixed {
+        }
+        @include mobile {
+            margin-bottom: 2rem;
+            max-width: var(--footer-logo-mw-mob);
+        }
+    }
+
+    // Footer links
+    a {
+        transition: color $default-timing ease;
+        &:hover {
+            color: var(--footer-text-hc);
+        }
+    }
+    // Socials
+    .row div:last-of-type {
+        margin-top: auto;
+    }
+
+    &__column {
+        display: flex;
+        align-items: flex-end;
+
+        @include mobile() {
+            padding-top: .5rem;
+        }
+    }
+
+    &__web-link {
+        a {
+            font-size: 2.25rem;
+            color: $primary-color;
+            text-transform: uppercase;
+            font-family: 'NeusaNextRegular';
+            font-weight: 900;
+
+            @include mobile() {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    &__social {
+        display: flex;
+        justify-content: flex-start;
+        @include mobile {
+            margin-top: 1rem;
+        }
+        &__item {
+            width: fit-content;
+            padding: 0.25rem;
+            @include mobile {
+                max-width: 1.75rem;
+            }
+
+            &:not(:last-of-type){
+                margin-right: calc(10rem / 16);
+            }
+
+            svg {
+                transition: fill $default-timing ease;
+                width: auto;
+                height: 30px;
+                fill: var(--footer-fb-c);
+            }
+
+            &:hover > svg {
+                fill: var(--footer-fb-hc) !important;
+
+                polygon {
+                    fill: var(--footer-fb-hc) !important;
+                }
+            }
+        }
+    }
+
+    &__subfooter {
+        font-size: 1rem;
+        font-family: 'NeusaNextRegular';
+        font-weight: 700;
+        position: absolute;
+        bottom: 1rem;
+        width: 100%;
+        text-align: center;
+        left: auto;
+        right: auto;
+
+        @include mobile() {
+            position: unset;
+            padding: 0 1.5rem;
+        }
+    }
+
+    // Vertical spacing mobile
+    @include mobile {
+        .inner {
+            margin-bottom: 1rem;
+        }
+        padding-bottom: 1rem;
+    }
+
+}

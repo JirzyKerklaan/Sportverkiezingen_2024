@@ -1,0 +1,14 @@
+<fieldset class="form__fieldset {{ inline? "form__fieldset--inline" : "" }}">
+    {{ foreach:options as="value|label" }}
+        <label class="form__inline">
+            <input
+                type="radio"
+                name="{{ handle }}"
+                value="{{ value }}"
+                {{ js_attributes }}
+                {{ (old === value) ?= 'checked' }}
+            >
+            {{ trans :key="label" }}
+        </label>
+    {{ /foreach:options }}
+</fieldset>

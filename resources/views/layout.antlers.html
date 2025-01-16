@@ -1,0 +1,44 @@
+{{#
+	@name Layout
+	@desc The default layout file.
+#}}
+
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+    <head>
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <!-- SEO -->
+        {{ partial:snippets/seo }}
+        <!-- Browser -->
+        {{ partial:snippets/browser_appearance }}
+        <!-- Style -->
+        {{ partial:snippets/style_config }}
+        {{ vite src="resources/sass/styles.scss" }}
+        <link rel="stylesheet" href="https://use.typekit.net/mip0msq.css">
+        <link rel="stylesheet" href="/css/custom.css">
+        {{ code_snippets:snippet_head }}
+    </head>
+    <body class="page-{{ blueprint }}" x-data="{ mobOpen: false }">
+        {{ partial:snippets/noscript }}
+        {{ partial:navigation/skip_to_content }}
+
+        {{ yield:seo_body }}
+
+        {{ partial:layout/header }}
+
+        {{ template_content }}
+
+        {{ partial:layout/footer }}
+        {{ partial:layout/backdrop }}
+
+        {{ yield:modal }}
+
+        {{ vite src="resources/ts/app.ts" }}
+        <script src="/js/custom.js"></script>
+        {{ code_snippets:snippet_footer }}
+
+    </body>
+</html>

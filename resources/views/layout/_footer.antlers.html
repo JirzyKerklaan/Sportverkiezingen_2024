@@ -1,0 +1,53 @@
+{{#
+	@name Footer
+	@desc The sites footer rendered on each page.
+#}}
+<footer id="page-footer" class="footer">
+    <div class="container-fluid">
+		<div class="row">
+            <div class="c12-xs c12-sm cos2-md cos0-sm footer__column">
+                <div class="inner">
+                    <span class="footer__web-link"><a href="https://lekkerbezigschiedam.nl/">lekkerbezigschiedam.nl</a></span>
+                </div>
+            </div>
+
+            <div class="c12-xs c12-sm cos1-md footer__column">
+                <div class="inner">
+                    <div class="footer__social">
+                        {{ if configuration.footer_x }}
+                            <a class="footer__social__item footer__social__item--x" href="{{ configuration.footer_x }}" target="_blank">
+                                <span class="sr-only">Bezoek onze X/Twitter pagina</span>
+                                {{ svg class="img" src="x-logo" }}
+                            </a>
+                        {{ /if }}
+                        {{ if configuration.footer_fb }}
+                            <a class="footer__social__item footer__social__item--fb" href="{{ configuration.footer_fb }}" target="_blank">
+                                <span class="sr-only">Bezoek onze facebook pagina</span>
+                                {{ svg class="img" src="facebook" }}
+                            </a>
+                        {{ /if }}
+                        {{ if configuration.footer_ig }}
+                            <a class="footer__social__item footer__social__item--ig" href="{{ configuration.footer_ig }}" target="_blank">
+                                <span class="sr-only">Bezoek onze instagram pagina</span>
+                                {{ svg class="img" src="insta-logo" }}
+                            </a>
+                        {{ /if }}
+                        {{ if configuration.footer_yt }}
+                            <a class="footer__social__item footer__social__item--li" href="{{ configuration.footer_yt }}" target="_blank">
+                                <span class="sr-only">Bezoek onze Youtube pagina</span>
+                                {{ svg class="img" src="yt-logo" }}
+                            </a>
+                        {{ /if }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="c12-xs c12-sm c3-md footer__column">
+                <div class="inner">
+                    <img class="img footer__logo" alt="{{configuration.footer_logo:alt}}" src="{{ configuration.footer_logo ? configuration.footer_logo : "\assets\logos\logo-big.png" }}">
+                </div>
+			</div>
+		</div>
+    </div>
+    <div class="footer__subfooter">Lekker bezig is een initiatief van gemeente Schiedam en Team Sportservice</span>
+</footer>

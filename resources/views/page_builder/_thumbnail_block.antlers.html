@@ -1,0 +1,71 @@
+{{#
+    @name Thumbnail block
+    @desc Contains thumbnail grid
+    @set page.page_builder.thumbnail_block
+#}}
+
+{{# Mobile style #}}
+{{ if collapse_settings.settings_padding_bottom_m || collapse_settings.settings_padding_top_m }}
+<style>
+    @media screen and (max-width: 760px){
+    {{ if collapse_settings.settings_padding_bottom_m }}
+        .block--{{ id }} {
+            padding-bottom: {{ collapse_settings.settings_padding_bottom_m | rem}}rem !important;
+        }
+    {{ /if }}
+    {{ if collapse_settings.settings_padding_top_m }}
+        .block--{{ id }} {
+            padding-top: {{ collapse_settings.settings_padding_top_m | rem}}rem !important;
+        }
+    {{ /if }}
+    }
+</style>
+{{ /if }}
+
+{{# HTML #}}
+<div class="block block--thumbnails block--{{ id }}  {{ collapse_settings:custom_class }}
+ {{ if collapse_settings.achtegrond_gradient !== 'null' }}{{ collapse_settings.achtergrond_gradient }}{{ /if }}"
+    style="{{ if collapse_settings:settings_bg_color }}background-color:{{ collapse_settings:settings_bg_color }};{{ /if }}
+    {{ if collapse_settings:settings_padding_top }}padding-top:{{ collapse_settings:settings_padding_top | rem }}rem;{{ /if }}
+    {{ if collapse_settings:settings_padding_bottom }}padding-bottom:{{ collapse_settings:settings_padding_bottom | rem }}rem;{{ /if }}
+">
+    <div class="container">
+        <div class="row">
+            <div class="
+                c12-xs
+                cos0-xs
+                c{{collapse_layout:width_all_column}}-md
+                c{{collapse_layout:width_all_column}}-sm
+                cos{{collapse_layout:offset_all_column}}-md
+                cos{{collapse_layout:offset_all_column}}-sm
+            ">
+                <div class="inner thumbnails">
+                    <div class="thumbnails__grid">
+                        {{ thumbnail_grid }}
+                            <div class="thumbnails__item">
+                                <div class="thumbnails__inner">
+                                    {{ if thumb_url }}
+                                    <a href="{{ thumb_url }}" class="thumbnails__link" title="{{ thumb_title }}">
+                                    {{ else }}
+                                    <div class="thumbnails__nolink">
+                                    {{ /if }}
+                                        <img src="{{ thumb_image:url }}" class="thumbnails__media" alt="{{ thumb_image:alt }}">
+                                        <div class="thumbnails__overlay">
+                                            <div class="thumbnails__text">
+                                                {{ thumb_title }}
+                                            </div>
+                                        </div>
+                                    {{ if thumb_url }}
+                                    </a>
+                                    {{ else }}
+                                    </div>
+                                    {{ /if }}
+                                </div>
+                            </div>
+                        {{ /thumbnail_grid }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,462 @@
+/**
+ * AMPEr.scss
+ *
+ * AMPEr is a vanilla js cookiebanner compliant with eu gdpr.
+ * (A)nalytic (M)arketing (P)ersonalization (E)ssential rozekoek.
+ *
+ * @version     2.2
+ * @license     http://www.opensource.org/licenses/mit-license.html MIT License
+ * @author      Bob Vrijland <bob@bahbv.net>
+ * @updated     15-12-2020
+ * @link        https://github.com/Bahbv
+ */
+
+/* Styling for AMPEr cookie banner
+ * 1. Variables and functions
+ * 2. Helpers
+ * 3. Modal
+ * 4. Buttons and icon's
+ * 5. Toggle switch component
+ * 6. Transition
+ * 7. Extra styling options
+ */
+
+// 1. Variables and functions
+
+// Function for converting a px based font-size to rem.
+@function rem($size) {
+    $remSize: calc($size / 16px);
+    @return #{$remSize}rem;
+}
+
+// Mixin that will include the fall back px declaration as well as the calculated rem value.
+@mixin fontSize($size) {
+    font-size: $size;
+    font-size: rem($size);
+}
+
+// Variables
+$knob-color: white;
+$active-color:  rgb(34, 34, 34);
+$inactive-color: grey;
+
+/* 2. Helpers ( Maybe this is already included, but heck .. )*/
+// When mouse is detected, ALL focused elements have outline removed.
+html.using-mouse :focus {
+    outline: none !important;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+html.using-mouse :focus + label span:last-child {
+    outline: none !important;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+/* 3. Modal */
+.AMPEr_modal {
+    width: calc(100% - 30px);
+    position: fixed;
+    bottom: 15px;
+    margin-right: 15px;
+    left: 15px;
+    background-color: white;
+    padding: 1rem;
+    border-radius: rem(10px);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    line-height: 1.75;
+    font-weight: 400;
+    font-family: 'NeusaNextRegular';
+
+    &_head {
+        margin: 0;
+        color: $active-color;
+        font-size: 2rem;
+        display:flex;
+        align-items: center;
+        line-height: 1.25;
+        font-weight: 600;
+    }
+
+    &_text {
+        margin: 1rem 0;
+        color: #222222;
+    }
+}
+
+.AMPEr_modal.right {
+    transform: translateX(150%);
+    -webkit-animation: AMPEr-slide-right 0.3s forwards;
+    -webkit-animation-delay: 0.3s;
+    animation: AMPEr-slide-right 0.3s forwards;
+    animation-delay: 0.3s;
+}
+
+.AMPEr_modal.left {
+    transform: translateX(-150%);
+    -webkit-animation: AMPEr-slide-left 0.3s forwards;
+    -webkit-animation-delay: 0.3s;
+    animation: AMPEr-slide-left 0.3s forwards;
+    animation-delay: 0.3s;
+}
+
+@media screen and (min-width:480px){
+    .AMPEr_modal {
+        width: 22rem;
+        margin-right: 0;
+    }
+    .AMPEr_modal.right {
+        left: unset;
+    }
+}
+
+/* 4. Buttons and icon's */
+.AMPEr_modal_buttons {
+    display: flex;
+    margin-top: 2rem;
+
+    button {
+        margin-right: 0.425rem;
+    }
+    button:last-of-type {
+        margin-right: 0;
+    }
+}
+
+.AMPEr_btn {
+        display: block;
+        border: none;
+        padding: 0.5rem 1rem;
+        margin: 0;
+        text-decoration: none;
+        background: $active-color;
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight:600;
+        cursor: pointer;
+        text-align: center;
+        border-radius:rem(5px);
+        transition: background 250ms ease-in-out,
+                    transform 150ms ease;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+    &:hover,
+    &:focus {
+        background: darken($active-color, 5%);
+    }
+
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 0.1875rem rgba(0, 0, 0, 1);
+    }
+
+    &:active {
+        transform: scale(0.99);
+    }
+
+    &--settings,
+    &--info {
+        padding: 0.425rem 0.425rem;
+        background: transparent;
+        border: rem(2px) solid $active-color;
+        color: $active-color;
+
+        &:hover,
+        &:focus {
+            background: transparent;
+            border-color: darken($active-color, 5%);
+            color: darken($active-color, 5%);
+
+            i svg{
+                fill: darken($active-color, 5%);
+            }
+        }
+
+    }
+
+}
+
+.AMPEr_icon--gear svg {
+    display:block;
+    fill:$active-color;
+    width: auto;
+    height: 1.2rem;
+}
+
+.AMPEr_icon--rozekoek {
+    display:inline-block;
+    background-size: 2rem 2rem;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.8rem;
+}
+
+/* 5. Toggle switch component */
+.AMPEr_switches {
+    // Remove default list style
+    padding: 0;
+    list-style: none;
+
+    // Layout and font
+    margin: 1rem 0;
+
+    li {
+        margin-bottom: 0.625rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+
+        small {
+            display:block;
+            font-size: 0.8rem;
+            color: rgb(95, 95, 95);
+        }
+    }
+
+    // Hide default input
+    input {
+        position: absolute;
+        left: -9999px;
+    }
+    // Label flex
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    // Custom switch
+    .AMPEr_switch {
+        // Inactive switch
+        span:last-child {
+            position:relative;
+            width: 3.125rem;
+            height:1.625rem;
+            border-radius: 0.9375rem;
+            background: $inactive-color;
+            transition: all 0.3s;
+
+            &:before {
+                content: "";
+                position: absolute;
+                left: rem(1px);
+                top: rem(1px);
+                width: 1.5rem;
+                height: 1.5rem;
+                background: $knob-color;
+                border-radius: 50%;
+                z-index: 1;
+                transition: transform 0.3s;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 0.5rem;
+                width: 0.75rem;
+                height: 0.75rem;
+                transform: translateY(-50%);
+                background: url('../svg/switch-unchecked.svg');
+                background-size: 0.75rem 0.75rem;
+            }
+        }
+                // Disabled switch
+                input[disabled] + label span:last-of-type {
+                    opacity: 0.5;
+                }
+                // Active switch
+                input:checked + label span:last-child {
+                    background: $active-color;
+
+                    &:before {
+                        transform: translateX(1.5rem);
+                    }
+                    &:after {
+                        width: 0.875rem;
+                        height: 0.875rem;
+                        left: 0.5rem;
+                        background-image: url('../svg/switch-checked.svg');
+                        background-size: 0.875rem 0.875rem;
+                    }
+                }
+        // Hover
+        &:hover{
+            span:last-child {
+                background:darken($inactive-color, 5%);
+            }
+            input:checked + label span:last-child  {
+                background:darken($active-color, 5%);
+            }
+        }
+        // Focus
+        input:focus + label span:last-child {
+            background: darken($inactive-color, 5%);
+            outline: 0;
+            box-shadow: 0 0 0 rem(3px) rgba(0, 0, 0, 1);
+        }
+        input:checked:focus + label span:last-child {
+            background: darken($active-color, 5%);
+            outline: 0;
+            box-shadow: 0 0 0 rem(3px) rgba(0, 0, 0, 1);
+        }
+
+    }
+}
+
+/* 6. Transition */
+#AMPEr_modal_1 {
+    display: none;
+
+    &.AMPEr--active {
+        display: block;
+    }
+}
+
+#AMPEr_modal_2 {
+    display: none;
+
+    &.AMPEr--active {
+        display: block;
+    }
+}
+
+/* 7. Extra styling options */
+/* 7.1 bottom bar */
+.AMPEr_modal.AMPEr--bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+
+    &.AMPEr--settings-active {
+        padding: 0;
+    }
+
+    #AMPEr_modal_1 {
+        &.AMPEr--active {
+            display:flex;
+        }
+        align-items: center;
+        justify-content: space-between;
+
+        .AMPEr_modal_head {
+            display: none;
+        }
+        .AMPEr_description {
+            flex-grow: 1;
+        }
+        .AMPEr_modal_buttons {
+            margin-top: 0;
+            display: flex;
+            justify-content: flex-end;
+            min-width: 200px;
+        }
+    }
+
+    #AMPEr_modal_2 {
+        background-color: white;
+        padding: 1rem;
+        border-radius: rem(10px);
+        max-width:400px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+
+    @media screen and (max-width: 768px){
+        #AMPEr_modal_1 {
+            flex-wrap: wrap;
+
+            .AMPEr_description {
+                flex-grow: 1;
+            }
+            .AMPEr_modal_buttons {
+                width: 100%;
+                margin-top: 0;
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    @media screen and (max-width: 420px){
+        #AMPEr_modal_2 {
+            width: 100%;
+            max-width: none;
+            top: unset;
+            left: unset;
+            bottom: 0;
+            transform: none;
+            border-radius: 0;
+            border-top-left-radius: 0.625rem;
+            border-top-right-radius: 0.625rem;
+
+            .AMPEr_modal_buttons {
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+/* 7.2 Centered (good for instant settings */
+.AMPEr_modal.AMPEr--centered {
+    left: 0;
+    right: 0;
+    margin-right: 0;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0;
+    border-top-left-radius: 0.625rem;
+    border-top-right-radius: 0.625rem;
+
+    @media screen and (min-width: 480px){
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        bottom: unset;
+        transform: translate(-50%, -50%);
+        width: 22rem;
+        border-radius: 0.625rem;
+
+    }
+}
+
+/* 8 Underlay */
+#AMPEr_Underlay {
+    z-index: -1;
+    position:fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+/* 9 Animations */
+@-webkit-keyframes AMPEr-slide-right {
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes AMPEr-slide-right {
+    100% {
+        transform: translateX(0);
+    }
+}
+@-webkit-keyframes AMPEr-slide-left {
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes AMPEr-slide-left {
+    100% {
+        transform: translateX(0);
+    }
+}
+
+#AMPEr_Cookies {
+    z-index: 1900;
+}

@@ -1,0 +1,31 @@
+/*Esens whitelabel font*/
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+* {
+    font-family: 'Lexend', Arial, sans-serif;
+}
+
+/* Esens whitelabel for login screen*/
+body.outside.rad-theme {
+    overflow: hidden;
+}
+.outside.rad-theme {
+    background: #e6007e;
+    background: linear-gradient(135deg, #e6007e 0%,#141414 95%)
+}
+.outside.rad-theme .btn-dropdown-primary, .outside.rad-theme .btn-primary {
+    background: #e6007e !important;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(248, 198, 202, 0.3) !important;
+}
+html:not(.dark) .outside.rad-theme .btn-primary,
+html:not(.dark) .outside.rad-theme .btn-primary:focus,
+html:not(.dark) .outside.rad-theme .btn-primary:hover {
+    background: linear-gradient(90deg, #e6007e, #141414 ) !important;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(248, 198, 202, 0.3) !important;
+}
+
+/* Esens whitelabel for CMS */
+#statamic .white-label-logo {
+    width: 100%;
+}

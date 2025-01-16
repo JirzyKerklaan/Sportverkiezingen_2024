@@ -1,0 +1,45 @@
+title: Witruimte
+fields:
+  -
+    handle: px_sm
+    field:
+      default: '16'
+      display: 'Pixels desktop'
+      type: integer
+      icon: integer
+      listable: hidden
+      instructions_position: above
+      validate:
+        - required
+      width: 50
+      visibility: visible
+      hide_display: false
+  -
+    handle: px_xs
+    field:
+      default: '16'
+      display: 'Pixels mobiel'
+      type: integer
+      icon: integer
+      width: 50
+      listable: hidden
+      instructions_position: above
+      validate:
+        - required
+      visibility: visible
+      hide_display: false
+  -
+    handle: hide_on
+    field:
+      inline: true
+      options:
+        hide-mob: Mobiel
+        hide-tab: Tablet
+        hide-desk: Desktop
+      display: 'Verbergen op'
+      type: checkboxes
+      icon: checkboxes
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false

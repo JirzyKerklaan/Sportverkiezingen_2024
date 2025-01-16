@@ -1,0 +1,198 @@
+title: Banner
+fields:
+  -
+    handle: slides
+    field:
+      collapse: false
+      previews: true
+      fullscreen: true
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          instructions: null
+          icon: null
+          sets:
+            slide:
+              display: Slide
+              instructions: null
+              icon: null
+              fields:
+                -
+                  handle: image
+                  field:
+                    max_files: 1
+                    mode: list
+                    container: assets
+                    restrict: false
+                    allow_uploads: true
+                    show_filename: true
+                    show_set_alt: true
+                    type: assets
+                    display: Afbeelding
+                    icon: assets
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    hide_display: false
+                -
+                  handle: content
+                  field:
+                    buttons:
+                      - h1
+                      - h2
+                      - h3
+                      - bold
+                      - italic
+                      - anchor
+                      - horizontalrule
+                      - alignleft
+                      - aligncenter
+                      - alignright
+                      - alignjustify
+                      - color
+                      - removeformat
+                    smart_typography: false
+                    save_html: false
+                    inline: false
+                    toolbar_mode: fixed
+                    reading_time: false
+                    fullscreen: true
+                    allow_source: true
+                    enable_input_rules: true
+                    enable_paste_rules: true
+                    remove_empty_nodes: false
+                    antlers: false
+                    link_noopener: false
+                    link_noreferrer: false
+                    target_blank: false
+                    always_show_set_button: false
+                    collapse: false
+                    previews: true
+                    type: bard
+                    display: Content
+                    icon: bard
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    hide_display: false
+      type: replicator
+      display: Slides
+      icon: replicator
+      instructions: 'Bij meer dan 1 slide word dit automatisch een slider.'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: section_slide_settings
+    field:
+      type: section
+      display: Instellingen
+      icon: section
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: height_desktop
+    field:
+      type: integer
+      display: 'Hoogte desktop'
+      icon: integer
+      instructions: 'In pixels'
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      default: '700'
+  -
+    handle: height_mobile
+    field:
+      type: integer
+      display: 'Hoogte mobiel'
+      icon: integer
+      instructions: 'In pixels'
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      default: '400'
+  -
+    handle: overlay_opacity
+    field:
+      default: '0.2'
+      type: float
+      display: 'Overlay opacity'
+      icon: float
+      instructions: 'Hoe donker is de afbeelding?'
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      validate:
+        - 'gte:0'
+        - 'lte:1'
+  -
+    handle: is_autoplay
+    field:
+      default: true
+      type: toggle
+      display: 'Autoplay aanzetten?'
+      icon: toggle
+      instructions: Ja/nee
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: animation_interval
+    field:
+      default: '5000'
+      type: integer
+      display: 'Autoplay interval'
+      icon: integer
+      instructions: 'in MS'
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: animation_type
+    field:
+      options:
+        slider: Slider
+        fade: Fade
+      taggable: false
+      push_tags: false
+      multiple: false
+      clearable: false
+      searchable: true
+      cast_booleans: false
+      default: slider
+      type: select
+      display: 'Soort animatie'
+      icon: select
+      instructions: 'Faden of sliden'
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: animation_speed
+    field:
+      default: '500'
+      type: integer
+      display: 'Animatie snelheid'
+      icon: integer
+      instructions: 'In MS'
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false

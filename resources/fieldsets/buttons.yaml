@@ -1,0 +1,19 @@
+title: Buttons
+fields:
+  -
+    handle: buttons
+    field:
+      fields:
+        -
+          import: button
+      mode: stacked
+      add_row: 'Knop toevoegen'
+      reorderable: true
+      type: grid
+      localizable: true
+      listable: hidden
+      display: Knoppen
+      replicator_preview: false
+      instructions_position: above
+      visibility: visible
+      always_save: false

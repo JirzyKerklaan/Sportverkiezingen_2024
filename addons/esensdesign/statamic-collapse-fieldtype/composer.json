@@ -1,0 +1,32 @@
+{
+  "name": "esensdesign/statamic-collapse-fieldtype",
+  "description": "A Collapse-Fieldtype for Statamic to beautifully hide and show your fields.",
+  "type": "statamic-addon",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "esensdesign\\CollapseFieldtype\\": "src"
+    }
+  },
+  "authors": [
+    {
+      "name": "esensdesign",
+      "email": "info@esens.nl"
+    }
+  ],
+  "extra": {
+    "statamic": {
+      "name": "Statamic Collapse-Fieldtype",
+      "description": "A Collapse-Fieldtype for Statamic to beautifully hide and show your fields."
+    },
+    "laravel": {
+      "providers": [
+        "esensdesign\\CollapseFieldtype\\ServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^7.3|^8.0|^8.1|^8.2",
+    "statamic/cms": "3.* | 4.* | 5.*"
+  }
+}

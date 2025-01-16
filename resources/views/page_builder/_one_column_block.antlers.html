@@ -1,0 +1,49 @@
+{{#
+    @name One column
+    @desc One column section block
+    @set page.page_builder.one_column_block
+#}}
+
+{{# Mobile style #}}
+{{ if collapse_settings.settings_padding_bottom_m || collapse_settings.settings_padding_top_m }}
+<style>
+    @media screen and (max-width: 760px){
+    {{ if collapse_settings.settings_padding_bottom_m }}
+        .block--{{ id }} {
+            padding-bottom: {{ collapse_settings.settings_padding_bottom_m | rem}}rem !important;
+        }
+    {{ /if }}
+    {{ if collapse_settings.settings_padding_top_m }}
+        .block--{{ id }} {
+            padding-top: {{ collapse_settings.settings_padding_top_m | rem}}rem !important;
+        }
+    {{ /if }}
+    }
+</style>
+{{ /if }}
+
+{{# HTML #}}
+<div class="block block--one-column block--{{ id }} {{ collapse_settings:custom_class }}
+ {{ if collapse_settings.achtegrond_gradient !== 'null' }}{{ collapse_settings.achtergrond_gradient }}{{ /if }}"
+    style="{{ if collapse_settings:settings_bg_color }}background-color:{{ collapse_settings:settings_bg_color }};{{ /if }}
+    {{ if collapse_settings:settings_padding_top }}padding-top:{{ collapse_settings:settings_padding_top | rem }}rem;{{ /if }}
+    {{ if collapse_settings:settings_padding_bottom }}padding-bottom:{{ collapse_settings:settings_padding_bottom | rem }}rem;{{ /if }}
+    " id="{{ if collapse_settings:block_id }}{{collapse_settings:block_id}}{{ /if }}">
+    <div class="container">
+        <div class="row">
+            <div class="
+                c12-xs
+                c{{collapse_layout:width_first_column}}-md
+                c{{collapse_layout:width_first_column}}-sm
+                cos{{collapse_layout:offset_first_column}}-md
+                cos{{collapse_layout:offset_first_column}}-sm
+                ">
+                <div class="inner">
+                    {{ article }}
+                        {{ partial src="components/{type}" }}
+                    {{ /article }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

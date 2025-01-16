@@ -1,0 +1,42 @@
+{
+    "name": "statamic-boiler",
+    "version": "4.0",
+    "description": "Template for Statamic websites",
+    "author": "Esens Design",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "watch": "vite --host --config vite-network.config.js",
+        "prod": "vite build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Esens-Design/statamic-boiler"
+    },
+    "dependencies": {
+        "@alpinejs/collapse": "^3.12.2",
+        "@alpinejs/focus": "^3.11.1",
+        "@splidejs/splide": "^4.1.4",
+        "alpinejs": "^3.10.5",
+        "focus-visible": "^5.2.0",
+        "glightbox": "^3.2.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.7",
+        "browser-sync": "^2.27.10",
+        "cross-env": "^7.0.3",
+        "glob-all": "^3.3.0",
+        "laravel-vite-plugin": "^0.7.3",
+        "postcss": "^8.4.14",
+        "postcss-focus-visible": "^6.0.4",
+        "postcss-import": "^14.1.0",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.51.0",
+        "sass-loader": "^12.1.0",
+        "ts-loader": "^9.2.9",
+        "typescript": "^4.6.4",
+        "vite": "^4.0.4",
+        "vite-plugin-browser-sync": "^1.0.2",
+        "vue-template-compiler": "^2.6.14"
+    }
+}

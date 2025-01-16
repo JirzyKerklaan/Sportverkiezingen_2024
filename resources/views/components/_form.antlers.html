@@ -1,0 +1,169 @@
+{{#
+    @name Form
+    @desc The form page builder block.
+    @set page.page_builder.form
+#}}
+<script src="/vendor/statamic/frontend/js/helpers.js"></script>
+{{# Open wrap with title and description #}}
+<div class="block__form form__wrap">
+    {{# Create the selected form and reference Alpine data in `sending()`. Prevent form from submitting with POST as we will submit with AJAX. #}}
+    {{ if form:handle }}
+        {{ nocache }}
+        <div x-data="sending" x-cloak class="relative" :class="{ 'form--sending' : sending }">
+            <div x-show="showTitle">
+                {{ if title }}
+                    <h2 class="form__title">{{ title }}</h2>
+                {{ /if }}
+
+                {{ if text }}
+                    <p class="form__description">{{ text }}</p>
+                {{ /if }}
+            </div>
+
+            {{# Show a message when there are errors or when the form is send. #}}
+            <template x-if="error">
+                <div class="form__error-message">
+                    <p>Er zijn wat fouten in het formulier gevonden.</p>
+                </div>
+            </template>
+            <template x-if="success">
+                <div class="form__succes-message">
+                    <p>Het formulier is succesvol verstuurd.</p>
+                </div>
+            </template>
+
+            {{# Our spinner which is shown while sending #}}
+            <div class="spinner"
+                x-show="sending"
+                x-transition
+                x-cloak>
+            </div>
+
+            {{# Our form tag, in a wrapper with x-show="!success" which removes the form on send #}}
+            <div
+                x-show="!success"
+                x-transition
+                x-transition.scale.origin.top
+                x-transition:leave.duration.250ms
+            >
+
+                {{ form:create in="{ form:handle }"
+                    id="form-{ form:handle }"
+                    csrf="false"
+                    class="form"
+                    x-ref="form"
+                    @submit.prevent="sendForm()"
+                    js="alpine:dynamic_form"
+                    action="{{ action_route }}"
+                }}
+                        {{# Honeypot spam protection. #}}
+                        <div class="hidden">
+                            <label for="{{ honeypot }}">{{ trans:strings.form_honeypot }} <sup>*</sup></label>
+                            <input id="{{ honeypot }}" type="text" name="{{ honeypot }}" tabindex="-1" autocomplete="off" />
+                        </div>
+
+                        {{# Loop through and render the form inputs #}}
+                        {{ fields }}
+                            <div class="form__group form__group--{{type}} w-{{ width }}" :class="{ 'has-error js-error': errors.{{ handle }} }">
+                                {{ if handle | starts_with('heading_text_cat') }}
+                                    <div class="form__field--heading">
+                                        {{ if handle == 'heading_text_cat1' }}<h4 class="form-heading white uc">Sport(st)er (18+) van het jaar</h4>{{ /if }}
+                                        {{ if handle == 'heading_text_cat2' }}<br><h4 class="form-heading yellow uc">Sporttalent (18-) van het jaar</h4>{{ /if }}
+                                        {{ if handle == 'heading_text_cat3' }}<br><h4 class="form-heading blue uc">Sportploeg van het jaar</h4>{{ /if }}
+                                        {{ if handle == 'heading_text_cat4' }}<br><br><h4 class="form-heading white">Jouw gegevens</h4>{{ /if }}
+                                    </div>
+                                {{ else }}
+                                <div class="form__controls">
+                                    {{ if instructions }}
+                                    <label class="label" for="{{ handle }}">
+                                        {{ instructions }}
+                                        {{ if validate | contains('required') }}<sup class="form__required">*</sup>{{ /if }}
+                                    </label>
+                                    {{ /if }}
+                                    {{ field }}
+                                </div><!-- .form__controls -->
+
+                                {{# Display error label when there is a validation error with the field. #}}
+                                <template x-if="errors.{{ handle }}">
+                                    <span class="form__error" id="{{ handle }}" x-html="errors.{{ handle }}"></span>
+                                </template>
+                                {{ /if }}
+                            </div><!-- .form__group -->
+                        {{ /fields }}
+
+                        {{# Submit button, disabled while sending #}}
+                        <div class="form__button">
+                            <div class="whitespace"></div>
+                            {{ partial:components/button as="button" class="btn btn--submit btn--primary "label="{ trans:strings.form_send }" }}
+                                {{ slot:attributes }}
+                                        :disabled="sending" :class="{ 'btn--disabled' : sending }"
+                                {{ /slot:attributes }}
+                            {{ /partial:components/button }}
+                        </div><!-- .form__button -->
+
+                {{ /form:create }}
+            </div>
+        </div>
+
+        {{#
+            The form script handling validation and submission via AJAX with `fetch()`.
+            We can also put analytic events in the succes
+        #}}
+         <script>
+            document.addEventListener('alpine:initializing', () => {
+                Alpine.data('sending', () => {
+                    return {
+                        error: false,
+                        errors: [],
+                        sending: false,
+                        success: false,
+                        showTitle: true,
+                        sendForm: async function() {
+                            this.sending = true
+
+                            // Post the form.
+                            fetch(this.$refs.form.action, {
+                                headers: {
+                                    'X-Requested-With' : 'XMLHttpRequest',
+                                    'X-CSRF-Token' : await getToken()
+                                },
+                                method: 'POST',
+                                body: new FormData(this.$refs.form)})
+                            .then(res => res.json())
+                            .then(await new Promise(resolve => setTimeout(resolve, 1500)))
+                            .then(json => {
+                                console.log(json)
+                                if (json['success']) {
+                                    this.errors = []
+                                    this.success = true
+                                    this.showTitle = false;
+                                    this.error = false
+                                    this.sending = false
+                                    this.$refs.form.reset()
+                                    {{ onsuccess_script }}
+
+                                    setTimeout(function(){
+                                        this.success = false
+                                    }, 4500)
+                                }
+                                if (json['error']) {
+                                    this.sending = false
+                                    this.error = true
+                                    this.success = false
+                                    this.errors = json['error']
+                                }
+                            })
+                            .catch(err => {
+                                err.text().then( errorMessage => {
+                                    this.sending = false
+                                })
+                            })
+                        }
+                    }
+                })
+            })
+        </script>
+        {{ /nocache }}
+    {{ /if }}
+
+</div><!-- .form__wrap -->

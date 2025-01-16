@@ -1,0 +1,13 @@
+<input
+    type="file"
+    {{ if instructions }}
+        id="{{ handle }}"
+    {{ /if }}
+    {{ if max_files === 1 }}
+        name="{{ handle }}"
+    {{ else }}
+        name="{{ handle }}[]"
+        multiple
+    {{ /if }}
+    {{ js_attributes }}
+>

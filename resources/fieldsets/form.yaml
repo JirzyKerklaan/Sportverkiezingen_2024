@@ -1,0 +1,44 @@
+title: Form
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      localizable: true
+      display: Titel
+      always_save: false
+  -
+    handle: text
+    field: common.text_plain
+    config:
+      display: Tekst
+  -
+    handle: form
+    field:
+      max_items: 1
+      type: form
+      display: Formulier
+      validate:
+        - required
+  -
+    handle: voeg_code_toe_aan_onsuccess
+    field:
+      mode: toggle
+      display: 'Voeg code toe aan onSuccess'
+      type: revealer
+      always_save: false
+  -
+    handle: action_route
+    field:
+      type: text
+      display: 'Action route'
+  -
+    handle: onsuccess_script
+    field:
+      mode: javascript
+      mode_selectable: false
+      display: 'Code snippet'
+      type: code
+      always_save: false
+      if:
+        voeg_code_toe_aan_onsuccess: 'equals true'

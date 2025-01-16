@@ -1,0 +1,12 @@
+{{#
+	@name Caption
+	@desc The typography caption partial to render a caption with `as` and `caption` attributes.
+#}}
+
+<!-- /typography/_caption.antlers.html -->
+{{ if caption }}
+    <{{ as or 'span' }}>
+        {{ caption }}
+    </{{ as or 'span' }}>
+{{ /if }}
+<!-- End: /typography/_caption.antlers.html -->

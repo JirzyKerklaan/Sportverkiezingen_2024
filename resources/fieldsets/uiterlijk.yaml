@@ -1,0 +1,66 @@
+title: 'Blok aanpassingen'
+fields:
+  -
+    handle: collapse_settings
+    field:
+      type: collapse
+      display: 'Blok aanpassingen'
+      fields:
+        -
+          handle: settings_bg_color
+          field:
+            type: color
+            display: Achtergrondkleur
+            width: 50
+            swatches:
+              - '#8cb63c'
+              - '#ffff'
+        -
+          handle: achtergrond_gradient
+          field:
+            options:
+              'null': Geen
+            type: select
+            display: 'Achtergrond Gradient'
+            width: 50
+            default: 'null'
+        -
+          handle: settings_padding_top
+          field:
+            type: integer
+            display: 'Aangepaste padding bovenkant'
+            instructions: 'In pixels'
+            width: 50
+        -
+          handle: settings_padding_bottom
+          field:
+            type: integer
+            display: 'Aangepaste padding onderkant'
+            instructions: 'In pixels'
+            width: 50
+        -
+          handle: settings_padding_top_m
+          field:
+            type: integer
+            display: 'Padding bovenkant mobiel'
+            instructions: 'In pixels'
+            width: 50
+        -
+          handle: settings_padding_bottom_m
+          field:
+            type: integer
+            display: 'Padding onderkant mobiel'
+            instructions: 'In pixels'
+            width: 50
+        -
+          handle: custom_class
+          field:
+            type: text
+            display: 'Custom class'
+            width: 50
+        -
+          handle: block_id
+          field:
+            type: text
+            display: 'Blok id'
+            width: 50

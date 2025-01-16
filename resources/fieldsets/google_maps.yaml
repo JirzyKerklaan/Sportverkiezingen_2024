@@ -1,0 +1,43 @@
+title: 'Google maps'
+fields:
+  -
+    handle: embed_iframe
+    field:
+      input_type: text
+      placeholder: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d597.3613072715424!2d4.397698474398347!3d51.94378069774109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4350bb63ff15d%3A0x21068e42a5cff587!2sEsens%20Design!5e0!3m2!1snl!2snl!4v1686576860178!5m2!1snl!2snl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+      antlers: false
+      type: text
+      display: 'Maps embed code'
+      icon: text
+      instructions: 'Plak hier de Google maps embed code, deze is te vinden onder het knopje delen > insluiten op de google maps website.'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      replicator_preview: false
+  -
+    handle: px_height
+    field:
+      default: '480'
+      type: integer
+      display: 'Hoogte desktop'
+      icon: integer
+      instructions: 'Hoogte van de maps in pixels'
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: px_height_mob
+    field:
+      type: integer
+      display: 'Hoogte mobiel'
+      icon: integer
+      instructions: 'Hoogte van de maps op mobiel in pixels'
+      width: 50
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      default: '384'

@@ -1,0 +1,23 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+html {
+    background: $secondary-color;
+}
+
+#page-content {
+    opacity: 0;
+    animation: fade-in ease 200ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#page-backdrop {
+    @include mobile {
+        background-color: rgba(0,0,0,0.5);
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+}

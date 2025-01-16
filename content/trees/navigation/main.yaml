@@ -1,0 +1,16 @@
+tree:
+  -
+    id: ac79a737-7014-44ad-a207-7b4701b2e671
+    entry: home
+  -
+    id: 08f919a1-0645-46b5-ba07-69242c313c03
+    entry: b9e79ec4-c1c4-46bc-997d-b9d0ce483fca
+  -
+    id: 7cd58e56-2fed-4b30-becb-ecfde08df4a7
+    entry: 12e11849-857c-45e4-b08f-55057150b832
+  -
+    id: 06563356-b0e3-4f45-8bbc-4b867294102c
+    title: Contact
+    url: 'mailto:info@sportverkiezingenschiedam.nl'
+    data:
+      external: false

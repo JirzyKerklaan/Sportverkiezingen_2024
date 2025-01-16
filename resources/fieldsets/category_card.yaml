@@ -1,0 +1,37 @@
+title: 'Categorie lijst'
+fields:
+  -
+    handle: category_card
+    field:
+      type: replicator
+      display: 'Categorie kaart'
+      sets:
+        nieuwe_set_groep:
+          display: 'Nieuwe Set Groep'
+          sets:
+            nieuwe_set:
+              display: 'Nieuwe set'
+              fields:
+                -
+                  handle: image
+                  field:
+                    max_files: 1
+                    container: assets
+                    type: assets
+                    display: Afbeelding
+                -
+                  handle: cta
+                  field:
+                    type: text
+                    display: CTA
+                    width: 66
+                -
+                  handle: text_color
+                  field:
+                    options:
+                      var1: 'Blauwe tekst, gele achtergrond'
+                      var2: 'Gele tekst, rode achtergrond'
+                      var3: 'Rode tekst, witte achtergrond'
+                    type: select
+                    display: 'Tekst kleur'
+                    width: 33

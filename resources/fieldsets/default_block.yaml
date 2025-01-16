@@ -1,0 +1,180 @@
+title: 'Default block'
+fields:
+  -
+    handle: blok_naam
+    field:
+      input_type: text
+      antlers: false
+      default: 'Standaard blok'
+      display: 'Blok naam'
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+  -
+    handle: layout
+    field:
+      fields:
+        -
+          handle: c_xs
+          field:
+            default: '12'
+            display: 'Kolommen mobiel'
+            type: integer
+            icon: integer
+            width: 33
+            listable: hidden
+            instructions_position: above
+            read_only: false
+            validate:
+              - required
+              - 'gt:0'
+              - 'lte:12'
+        -
+          handle: c_sm
+          field:
+            default: '12'
+            display: 'Kolommen tablet'
+            type: integer
+            icon: integer
+            listable: hidden
+            instructions_position: above
+            read_only: false
+            validate:
+              - required
+              - 'gt:0'
+              - 'lte:12'
+            width: 33
+        -
+          handle: c_md
+          field:
+            default: '12'
+            display: 'Kolommen desktop'
+            type: integer
+            icon: integer
+            listable: hidden
+            instructions_position: above
+            read_only: false
+            validate:
+              - required
+              - 'lte:12'
+              - 'gt:0'
+            width: 33
+        -
+          handle: o_xs
+          field:
+            default: '0'
+            display: 'Inspringen mobiel'
+            type: integer
+            icon: integer
+            width: 33
+            listable: hidden
+            instructions_position: above
+            read_only: false
+            validate:
+              - required
+              - 'gte:0'
+              - 'lte:11'
+              - 'this + c_xs <= 12'
+        -
+          handle: o_sm
+          field:
+            default: '0'
+            display: 'Inspringen tablet'
+            type: integer
+            icon: integer
+            width: 33
+            listable: hidden
+            instructions_position: above
+            read_only: false
+            validate:
+              - required
+              - 'lte:11'
+              - 'gte:0'
+        -
+          handle: o_md
+          field:
+            default: '0'
+            display: 'Inspringen desktop'
+            type: integer
+            icon: integer
+            width: 33
+            listable: hidden
+            instructions_position: above
+            read_only: false
+            validate:
+              - required
+              - 'lte:11'
+              - 'gte:0'
+        -
+          handle: hide_on
+          field:
+            inline: true
+            options:
+              hide-mob: Mobiel
+              hide-tab: Tablet
+              hide-desk: Desktop
+            display: 'Verbergen op'
+            type: checkboxes
+            icon: checkboxes
+            listable: hidden
+            instructions_position: above
+            read_only: false
+            width: 50
+        -
+          handle: uitlijning_verticaal
+          field:
+            options:
+              align-top: Boven
+              align-mid: Midden
+              align-bot: Onder
+            inline: true
+            cast_booleans: false
+            default: align-top
+            display: 'Uitlijning verticaal'
+            type: radio
+            icon: radio
+            listable: hidden
+            instructions_position: above
+            read_only: false
+            width: 50
+      display: Layout
+      type: collapse
+      icon: section
+      listable: hidden
+      instructions_position: above
+      instructions: 'Instellingen voor kolommen en weergave.'
+  -
+    handle: article
+    field: article.article
+    config:
+      buttons:
+        - h1
+        - h2
+        - h3
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - quote
+        - removeformat
+  -
+    handle: extra
+    field:
+      fields:
+        -
+          handle: extra_class
+          field:
+            input_type: text
+            antlers: false
+            display: 'Extra class'
+            type: text
+            icon: text
+            listable: hidden
+            instructions_position: above
+            read_only: false
+      display: Extra
+      type: collapse
+      icon: section
+      listable: hidden
+      instructions_position: above

@@ -1,0 +1,14 @@
+title: 'Browser stijlen'
+data:
+  disable_telephone_detection: false
+  disable_email_detection: false
+  disable_address_detection: false
+  use_theme_color: false
+  apple_mobile_web_app: false
+  android_mobile_web_app: false
+  use_favicons: true
+  svg: favicon-32x32.png
+  safari_color: '#000000'
+  ios_color: '#ffffff'
+  apple_touch_icon: apple-touch-icon.png
+  android_chrome: android-chrome-512x512.png

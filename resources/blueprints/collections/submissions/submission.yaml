@@ -1,0 +1,36 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: Naam
+          -
+            handle: email
+            field:
+              type: text
+              display: E-mailadres
+          -
+            handle: sportperson
+            field:
+              type: text
+              display: Sportpersoon
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+title: 'Opgegeven sportpersonen'

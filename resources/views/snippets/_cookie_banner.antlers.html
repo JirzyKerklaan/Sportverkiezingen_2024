@@ -1,0 +1,69 @@
+{{#
+	@name Cookie banner
+	@desc The cookie banner component defined in `resources/views/snippets/_seo.antlers.html`, uses AMPEr.
+#}}
+<script src="/vendor/amper/AMPEr.js"></script>
+<script>
+   AMPEr.init({
+        {{ if seo:debug_mode }} debugMode: true, {{ /if }}
+        language: "{{ site:short_locale }}",
+        extraClass: "{{ seo:display_style }}",
+        analyticCallback: function(){
+            {{ if seo:debug_mode }}  console.log('Analytics: Allowed'); {{ /if }}
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted',
+            });
+        },
+        marketingCallback: function(){
+            {{ if seo:debug_mode }}  console.log('Marketing: Allowed'); {{ /if }}
+            gtag('consent', 'update', {
+                'ad_storage': 'granted',
+            });
+        },
+        personalizationCallback: function(){
+            {{ if seo:debug_mode }}  console.log('Personalization : Allowed'); {{ /if }}
+        },
+        globalCallback: function(){
+            {{ if seo:debug_mode }}  console.log('Global callback done'); {{ /if }}
+            return;
+        },
+        lexicon: {
+                   en: {
+                       modalTitle: "Cookies",
+                       modalContent: "In order to deliver a personalised, responsive service and to improve the site, we remember and store information about how you use it.",
+                       acceptBtn: "Accept all <span class='sr-only'>cookies and close this popup.",
+                       settingsBtn: "Settings",
+                       settingsTitle: "Settings",
+                       saveBtn: "Save",
+                       infoBtn: "More info <span class='sr-only'>about cookies",
+                       infoPage: "{{ seo:cookiepagina:url }}",
+                       analytic: "Analytic cookies",
+                       analyticInfo: "For analysing traffic and usage",
+                       marketing: "Marketing cookies",
+                       marketingInfo: "For personalised ads",
+                       personalization: "Personalization cookies",
+                       personalizationInfo: "For saving user preference and settings",
+                       essential: "Functional cookies",
+                       essentialInfo: "Necessary for a working site",
+                   },
+                   nl: {
+                       modalTitle: "Cookies",
+                       modalContent: "Om een gepersonaliseerde, responsieve service te kunnen leveren en om de site te verbeteren, onthouden we informatie over hoe u deze site gebruikt en slaan we deze op.",
+                       acceptBtn: "Accepteer alles <span class='sr-only'>qua cookies en sluit deze popup.",
+                       saveBtn: "Opslaan",
+                       infoBtn: "Meer info <span class='sr-only'>over cookies",
+                       infoPage: "{{ seo:cookiepagina:url }}",
+                       settingsTitle: "Instellingen",
+                       settingsBtn: "Instellingen",
+                       analytic: "Analytische cookies",
+                       analyticInfo: "Analyseren het verkeer en gebruik",
+                       marketing: "Marketing cookies",
+                       marketingInfo: "Voor persoonlijke advertenties",
+                       personalization: "Personalisatie cookies",
+                       personalizationInfo: "Slaan voorkeuren en instellingen op",
+                       essential: "Functionele cookies",
+                       essentialInfo: "Zijn noodzakelijk voor een werkende site",
+                   },
+               },
+   });
+</script>

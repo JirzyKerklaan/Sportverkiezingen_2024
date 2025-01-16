@@ -1,0 +1,29 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+.block--gallery {
+    .gallery {
+        // Hover
+        &__link {
+            overflow: hidden;
+            display: block;
+            :hover .gallery__image {
+                transform: scale(1.05);
+            }
+        }
+        &__image {
+            transition: transform $default-timing ease-in-out;
+        }
+
+        // Margin
+        div:nth-child(-n+2) {
+            margin-bottom: var(--gutters-md);
+            @include fixed {
+                margin-bottom: var(--gutters-sm);
+            }
+            @include mobile {
+                margin-bottom: var(--gutters-xs);
+            }
+        }
+    }
+
+}

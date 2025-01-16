@@ -1,0 +1,30 @@
+{{# Bind custom error classses when there is a validation error with the field. #}}
+<div class="select__wrap">
+    <select
+        name="{{ handle }}{{ multiple ?= "[]" }}"
+        class="js-input {{ placeholder ? "has-placeholder" : "" }}"
+        {{ multiple ?= "multiple" }}
+        {{ js_attributes }}
+        {{ if instructions }}
+            id="{{ handle }}"
+        {{ /if }}
+    >
+        {{ unless multiple }}
+            <option value> {{ placeholder ? "{{ placeholder }}" : "Kies een optie.." }} </option>
+        {{ /unless }}
+
+
+
+        {{ foreach:options as="value|label" }}
+
+            <option
+                value="{{ value }}"
+                {{ if old|in_array(value) or old === value }}
+                    selected
+                {{ /if }}
+            >
+                {{ label }}
+            </option>
+        {{ /foreach:options }}
+    </select>
+</div>

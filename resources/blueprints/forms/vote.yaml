@@ -1,0 +1,79 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: heading_text_cat1
+            field:
+              type: text
+              display: 'Sport(st)er (18+)'
+          -
+            handle: cat1
+            field:
+              type: text
+              display: 'Naam Sport(st)er'
+              instructions: Naam
+          -
+            handle: cat1_sport
+            field:
+              type: text
+              display: 'Sport Sport(st)er'
+              instructions: Sport
+          -
+            handle: heading_text_cat2
+            field:
+              type: text
+              display: Sporttalent
+          -
+            handle: cat2
+            field:
+              type: text
+              display: 'Naam Sporttalent'
+              instructions: Naam
+          -
+            handle: cat2_sport
+            field:
+              type: text
+              display: 'Sport sporttalent'
+              instructions: Sport
+          -
+            handle: heading_text_cat3
+            field:
+              type: text
+              display: Sportploeg
+          -
+            handle: cat3
+            field:
+              type: text
+              display: 'Naam sportploeg'
+              instructions: Naam
+          -
+            handle: cat3_sport
+            field:
+              type: text
+              display: 'Sport sportploeg'
+              instructions: Sport
+          -
+            handle: heading_text_cat4
+            field:
+              type: text
+              display: 'Jouw gegevens'
+          -
+            handle: name
+            field:
+              type: text
+              display: Naam
+              instructions: Naam
+              validate:
+                - required
+          -
+            handle: email
+            field:
+              input_type: email
+              type: text
+              display: 'Uw e-mailadres'
+              instructions: E-mailadres
+              validate:
+                - required

@@ -1,0 +1,122 @@
+{{#
+	@name Style config
+	@desc Sets all the variables from the configuration
+
+    We are making use of null coalesce operator to always have a fallback like:
+    {{ configuration.variable ?? "Fallback if variable is empty" }}
+    If we want to add a modifier we can do it like thise
+    {{ configuration.variable | modifier ?? "Fallback if variable is empty" | modifier }}
+#}}
+
+{{# CSS variables #}}
+<style>
+    /* Fonts  */
+    {{ if configuration.font_import }}
+        @import url('https://{{ configuration.font_import }}');
+    {{ else }}
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    {{ /if }}
+    {{ if configuration.font_family_body }}
+    body {
+        font-family: {{ configuration.font_family_body }};
+    }
+    {{ /else }}
+    body {
+        font-family: 'Roboto', sans-serif;;
+    }
+    {{ /if }}
+    {{ if configuration.font_family_head }}
+    h1, h2, h3, h4, h5, h6 {
+        font-family: {{ configuration.font_family_head }};
+    }
+    {{ else }}
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Roboto', sans-serif;
+    }
+    {{ /if }}
+
+    /* Advanced settings */
+    :root {
+        --root-font-size: {{ configuration.html_root_size ?? "16" }}px;
+        --max-width: {{ configuration.max_width ?? "1560"}}px;
+        --padding: {{ configuration.padding | rem ?? "1.5"}}rem;
+        --gutters-xs: {{ configuration.gutters_xs | rem ?? "1"}}rem;
+        --gutters-xs-negative: -{{ configuration.gutters_xs | rem ?? "1"}}rem;
+        --gutters-sm: {{ configuration.gutters_sm | rem ?? "1"}}rem;
+        --gutters-sm-negative: -{{ configuration.gutters_sm | rem ?? "1"}}rem;
+        --gutters-md: {{ configuration.gutters_md | rem ?? "1.5"}}rem;
+        --gutters-md-negative: -{{ configuration.gutters_md | rem ?? "1.5"}}rem;
+    }
+
+    /* Header settings */
+    :root {
+        --header-logo-mh: {{ configuration.header_logo_mh | rem ??"48" | rem }}rem;
+        --header-logo-mh-mob: {{ configuration.header_logo_mh_mob | rem  ?? "32" | rem }}rem;
+        --header-height: {{ configuration.header_height | rem ?? "80" | rem }}rem;
+        --header-height-mob: {{ configuration.header_height_mob | rem ?? "63" | rem }}rem;
+        --header-bg-c: {{ configuration.header_bg_c ??  "#fff" }};
+        --header-b-c: {{ configuration.header_b_c ?? "#fff" }};
+        --header-hb-c: {{ configuration.header_hb_c ?? "#e5007e" }};
+        --header-link-c: {{ configuration.header_link_c ?? "#222" }};
+        --header-link-hc: {{ configuration.header_link_hc ?? "#e5007e" }};
+        --header-bg-c-menu: {{ configuration.header_bg_c_menu ?? "#fafafa" }};
+        --header-link-c-menu: {{ configuration.header_link_c_menu ?? "#222" }};
+    }
+
+    /* Color settings */
+    :root {
+        --cookie-primary-color: {{ configuration.cookie_primary_color ?? "#222" }};
+        --cookie-toggle-color: {{ configuration.cookie_toggle_color ?? "#222" }};
+    }
+
+
+    /* Footer settings */
+    :root {
+        --footer-logo-mw: {{ configuration.footer_logo_mw | rem ?? "200" | rem }}rem;
+        --footer-logo-mw-mob: {{ configuration.footer_logo_mw_mob | rem ?? "120" | rem }}rem;
+        --footer-bg-c: {{ configuration.footer_bg_c ?? "#e5007e" }};
+        --footer-text-c: {{ configuration.footer_text_c ?? "#fff" }};
+        --footer-text-hc: {{ configuration.footer_text_hc ?? "#efefef" }};
+        --footer-fb-c: {{ configuration.footer_fb_c ??  "#fff" }};
+        --footer-fb-hc: {{ configuration.footer_fb_hc ??  "#fff" }};
+        --footer-ig-c: {{ configuration.footer_ig_c ??  "#fff" }};
+        --footer-ig-hc: {{ configuration.footer_ig_hc ?? "#efefef" }};
+        --footer-li-c: {{ configuration.footer_yt_c ?? "#fff" }};
+        --footer-li-hc: {{ configuration.footer_yt_hc ?? "#efefef" }};
+    }
+
+    /* Form settings */
+    :root {
+        --form-hc: {{ configuration.form_hc ?? "#009dfa" }};
+        --form-ec: {{ configuration.form_ec ?? "#ff0000" }};
+        --form-sc: {{ configuration.form_sc ?? "#428959" }};
+    }
+
+    /*
+     * Typography settings
+     * We use 1.333 - Perfect Fourth defaults for desktop
+     * and 1.25 - Major Third for mobile
+     * https://typescale.com/
+    */
+    :root {
+        --font-h1 : {{ configuration.font_h1 | rem ?? "67.34" | rem }}rem;
+        --font-h1-m: {{ configuration.font_h1_m | rem ?? "48.83" | rem }}rem;
+        --font-h2: {{ configuration.font_h2 | rem ?? "50.52" | rem }}rem;
+        --font-h2-m: {{ configuration.font_h2_m | rem ?? "39.06" | rem }}rem;
+        --font-h3: {{ configuration.font_h3 | rem ?? "37.90" | rem }}rem;
+        --font-h3-m: {{ configuration.font_h3_m | rem ?? "31.25" | rem }}rem;
+        --font-h4: {{ configuration.font_h4 | rem ?? "28.43" | rem }}rem;
+        --font-h4-m: {{ configuration.font_h4_m | rem ?? "25" | rem }}rem;
+        --font-h5: {{ configuration.font_h5 | rem ?? "21.33" | rem }}rem;
+        --font-h5-m: {{ configuration.font_h5_m | rem ?? "20" | rem }}rem;
+        --font-h6: {{ configuration.font_h6 | rem ?? "16" | rem }}rem;
+        --font-h6-m: {{ configuration.font_h6_m | rem ?? "16" | rem }}rem;
+        --font-body: {{ configuration.font_body | rem ?? "16" | rem }}rem;
+        --font-body-m: {{ configuration.font_body_m | rem ?? "16" | rem }}rem;
+        --font-body-c: {{ configuration.font_body_c ?? "#222" }};
+        --font-head-c: {{ configuration.font_head_c ?? "#222" }};
+        --font-link-c: {{ configuration.font_link_c ?? "#222" }};
+        --font-link-hc: {{ configuration.font_link_hc ?? "#e5007e" }};
+        --font-underline-h: {{ font_underline_hover ? "underline" : "none" }};
+    }
+</style>

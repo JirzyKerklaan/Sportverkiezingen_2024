@@ -1,0 +1,59 @@
+{{ if height_desktop || height_mobile || overlay_opacity }}
+<style>
+    {{ if height_desktop }}
+        .block__banner--{{ id }} .splide__slide {
+            height: {{ height_desktop | rem }}rem;
+        }
+    {{ /if }}
+    {{ if height_mobile }}
+        @media (max-width: 760px) {
+            .block__banner--{{ id }} .splide__slide {
+                height: {{ height_mobile | rem }}rem;
+            }
+        }
+    {{ /if }}
+    {{ if overlay_opacity > 0 }}
+        .block__banner--{{ id }} .splide__overlay {
+            background-color: rgba(0,0,0,{{ overlay_opacity }});
+        }
+    {{ /if }}
+</style>
+{{ /if }}
+
+<div class="block__banner block__banner--{{id}} {{ if slides | count > 1 }}splide{{ /if }} splide--banner" aria-label="Banner met afbeeldingen"
+    data-splide='
+        {
+            {{ if is_autoplay }}
+            "autoplay":"true",
+            "interval":"{{ animation_interval }}",
+            {{ /if }}
+            {{ if animation_type === 'fade' }}
+            "rewind": true,
+            "type":"fade",
+            {{ else }}
+            "type":"loop",
+            {{ /if }}
+            "speed":"{{ animation_speed }}",
+            "arrows": false,
+            "pagination":false
+        }'>
+    <div class="splide__track">
+        <ul class="splide__list">
+            {{ slides }}
+                <li class="splide__slide">
+                    <div class="splide__image">
+                        <picture>
+                            <source srcset="{{ glide :src="image:url" format="webp" }}" type="image/webp">
+                            <img class="img splide__media" src="{{ image:url }}" alt="{{ image:alt }}">
+                        </picture>
+                    </div>
+                    <div class="splide__overlay">
+                        <div class="splide__content">
+                            {{ content }}
+                        </div>
+                    </div>
+                </li>
+            {{ /slides }}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+.img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image {
+    &__link {
+        display: block;
+        text-decoration: none;
+    }
+}

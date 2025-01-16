@@ -1,0 +1,75 @@
+title: Gallerij
+fields:
+  -
+    handle: images_highlight
+    field:
+      max_files: 5
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Uitgelichte afbeeldingen'
+      icon: assets
+      instructions: 'De 5 uitgelichte afbeeldingen die meteen getoont worden in het grid.'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: image_height_first
+    field:
+      type: integer
+      display: 'Hoogte afbeeldingen'
+      icon: integer
+      instructions: 'Eerste rij, in px.'
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      default: '660'
+  -
+    handle: image_height_second
+    field:
+      type: integer
+      display: 'Hoogte afbeeldingen'
+      icon: integer
+      instructions: 'Tweede rij, in px.'
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      default: '520'
+  -
+    handle: is_flipped
+    field:
+      default: false
+      type: toggle
+      display: 'Afbeeldingen omdraaien'
+      icon: toggle
+      width: 33
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+  -
+    handle: images_all
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Overige afbeeldingen'
+      icon: assets
+      instructions: 'De rest van de afbeeldingen die in de gallerij komen maar niet meteen getoond worden'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false

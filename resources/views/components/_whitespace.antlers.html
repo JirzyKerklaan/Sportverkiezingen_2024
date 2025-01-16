@@ -1,0 +1,17 @@
+<style>
+    .block__whitespace--{{ id }} {
+        height: {{ px_sm | rem }}rem;
+    }
+    @media (max-width: 760px) {
+        .block__whitespace--{{ id }}  {
+            height: {{ px_xs | rem }}rem;
+        }
+    }
+</style>
+<div class="
+    block__whitespace
+    block__whitespace--{{ id }}
+    {{ hide_on }}
+        {{ value }}
+    {{ /hide_on }}" >
+</div>

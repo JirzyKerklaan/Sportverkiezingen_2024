@@ -1,0 +1,55 @@
+{{#
+	@name Image
+	@desc Component to show images 100% width
+#}}
+{{ if max_width_desktop or max_width_mobile }}
+    <style>
+        {{ if max_width_desktop }}
+            .block__image--{{ id }} .img {
+                max-width: {{max_width_desktop | rem }}rem;
+            }
+        {{ /if }}
+        {{ if max_width_mobile }}
+        @media (max-width: 760px) {
+            .block__image--{{ id }} .img {
+                max-width: {{max_width_mobile | rem }}rem;
+            }
+        }
+        {{ /if }}
+    </style>
+{{ /if }}
+<div class="block__image block__image--{{ id }} {{ if make_link}}block__image--link{{/if}}">
+    {{ if make_link}}
+        <a class="image__link" href="{{ link }}"
+        {{ if link | starts_with:http }} target="_blank" {{ /if }}>
+    {{ /if }}
+
+    {{if image_mobiel && image_desktop }}
+        {{# Both images #}}
+        <picture>
+            <source media="(min-width: 681px)" srcset="{{ glide :src="image_desktop:url" format="webp" }}" type="image/webp">
+            <source media="(min-width: 681px)" srcset="{{ image_desktop:url }}">
+            <source srcset="{{ glide :src="image_mobiel:url" format="webp" }}" type="image/webp">
+            <img class="img" src="{{ image_mobiel:url }}" alt="{{ image_mobiel:alt }}">
+        </picture>
+    {{ else }}
+        {{ if image_desktop }}
+            {{# Desktop only #}}
+            <picture>
+                <source srcset="{{ glide :src="image_desktop:url" format="webp" }}" type="image/webp">
+                <img class="img" src="{{ image_desktop:url }}" alt="{{ image_desktop:alt }}">
+            </picture>
+        {{ else }}
+            {{# Mobile only #}}
+            <picture>
+                <source srcset="{{ glide :src="image_mobiel:url" format="webp" }}" type="image/webp">
+                <img class="img" src="{{ image_mobiel:url }}" alt="{{ image_mobiel:alt }}">
+            </picture>
+        {{ /if}}
+    {{ /if }}
+
+    {{ if make_link}}
+        </a>
+    {{ /if }}
+
+</div>

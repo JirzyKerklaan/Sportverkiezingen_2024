@@ -1,0 +1,33 @@
+super: true
+name: Bob
+id: 61605626-1cd1-4b9a-805c-2de9bae38ad8
+password_hash: $2y$10$e/84IEAb9pynHtbsBHk3e.QzdeSEocW/J7eJM14Vz0HzpRwAvd6Te
+preferences:
+  collections:
+    pages:
+      after_save: continue_editing
+    articles:
+      columns:
+        - title
+        - categorieen
+        - date
+        - slug
+        - status
+    news:
+      columns:
+        - title
+        - categorieen
+        - status
+        - date
+  assets:
+    social_images:
+      mode: grid
+  locale: nl
+  forms:
+    contact:
+      columns:
+        - datestamp
+        - subject
+        - name
+        - email
+        - message

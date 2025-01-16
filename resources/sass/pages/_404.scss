@@ -1,0 +1,31 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+.page-404 {
+    display:flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 0 var(--padding, 1.5rem);
+
+    &__content {
+        padding: 1.5rem;
+        border-radius: 1rem;
+        text-align: center;
+        margin-bottom: 12.5%;
+        margin-top: 12.5%;
+    }
+    &__title {
+        font-size: 5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        font-weight: 800;
+        color: #faed45;
+    }
+
+    .btn--404 {
+        margin-top: 2rem;
+        display: inline-block;
+        text-decoration: center;
+    }
+}

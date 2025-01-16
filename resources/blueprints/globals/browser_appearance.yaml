@@ -1,0 +1,315 @@
+sections:
+  general:
+    display: Globaal
+    fields:
+      -
+        handle: section_universal
+        field:
+          type: section
+          listable: hidden
+          display: Universeel
+          instructions: 'Configureer universele metatags.'
+          instructions_position: above
+          read_only: false
+      -
+        handle: disable_telephone_detection
+        field:
+          display: 'Telefoondetectie uitschakelen'
+          type: toggle
+          icon: toggle
+          width: 33
+          instructions: 'Schakelt detectie van telefoonnummers uit.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: disable_email_detection
+        field:
+          display: 'E-maildetectie uitschakelen'
+          type: toggle
+          icon: toggle
+          width: 33
+          instructions: 'Detectie van e-mailadressen uitgeschakeld.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: disable_address_detection
+        field:
+          display: 'Adresdetectie uitschakelen'
+          type: toggle
+          icon: toggle
+          width: 33
+          instructions: 'Schakelt adresdetectie uit.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: section_theme
+        field:
+          type: section
+          listable: hidden
+          display: Thema
+          instructions: 'Configureer universele thema-metatags.'
+          instructions_position: above
+          read_only: false
+      -
+        handle: use_theme_color
+        field:
+          display: 'Themakleur gebruiken'
+          type: toggle
+          icon: toggle
+          width: 50
+          instructions: 'Schakel dit in als u themakleuren voor verschillende browsers wilt specificeren.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: use_theme_color_dark_mode
+        field:
+          display: 'Voor donkere modus'
+          type: toggle
+          icon: toggle
+          width: 50
+          instructions: 'Schakel deze optie in als u een specifieke themakleur wilt opgeven voor de donkere modus.'
+          listable: hidden
+          if:
+            use_theme_color: 'equals true'
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: theme_color
+        field:
+          theme: nano
+          lock_opacity: true
+          default_color_mode: HEXA
+          color_modes:
+            - hex
+          display: 'Thema kleur'
+          type: color
+          default: '#ffffff'
+          icon: color
+          listable: hidden
+          width: 50
+          instructions: 'Stelt de themakleur in voor Safari (iOS 15+ en MacOS 11.4+) en de Android Chrome-browser.'
+          if:
+            use_theme_color: 'equals true'
+          instructions_position: above
+          read_only: false
+      -
+        handle: theme_color_dark_mode
+        field:
+          theme: nano
+          lock_opacity: true
+          default_color_mode: HEXA
+          color_modes:
+            - hex
+          display: 'Themakleur donkere modus'
+          type: color
+          default: '#000000'
+          icon: color
+          listable: hidden
+          width: 50
+          instructions: 'Stelt de themakleur in voor Safari (iOS 15+ en MacOS 11.4+) en de Android Chrome-browser in donkere modus.'
+          if:
+            use_theme_color: 'equals true'
+            use_theme_color_dark_mode: 'equals true'
+          instructions_position: above
+          read_only: false
+      -
+        handle: section_apple
+        field:
+          type: section
+          listable: hidden
+          display: Apple
+          instructions: 'Configureer Apple-specifieke metatags.'
+          instructions_position: above
+          read_only: false
+      -
+        handle: apple_mobile_web_app
+        field:
+          display: 'Apple mobile web app'
+          type: toggle
+          icon: toggle
+          width: 50
+          instructions: 'Opent websites die zijn opgeslagen op de iOS-springplank op volledig scherm in zijn eigen Safari-instantie.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: apple_status_bar_black
+        field:
+          display: 'Apple-statusbalk zwart'
+          type: toggle
+          icon: toggle
+          width: 50
+          instructions: 'Kan alleen worden gebruikt wanneer ''Apple mobiele web-app'' is ingeschakeld en een zwarte statusbalk forceert.'
+          listable: hidden
+          if:
+            apple_mobile_web_app: 'equals true'
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: section_android
+        field:
+          type: section
+          listable: hidden
+          display: Android
+          instructions: 'Configureer Android-specifieke metatags.'
+          instructions_position: above
+          read_only: false
+      -
+        handle: android_mobile_web_app
+        field:
+          display: 'Android mobiele web-app'
+          type: toggle
+          icon: toggle
+          width: 50
+          instructions: 'Opent websites die zijn opgeslagen op het startscherm van Android in zijn eigen Chrome-instantie.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          default: false
+  favicons:
+    display: Favicons
+    fields:
+      -
+        handle: section_favicons
+        field:
+          type: section
+          listable: hidden
+          display: Favicons
+          instructions: 'Configureer favicons zodat ze automatisch kunnen worden gegenereerd.'
+          instructions_position: above
+          read_only: false
+      -
+        handle: use_favicons
+        field:
+          display: 'Gebruik favicons'
+          type: toggle
+          icon: toggle
+          instructions: 'Schakel dit in als u wilt dat het CMS favicons genereert. **Belangrijk**: je moet de PHP Imagick-module geïnstalleerd hebben.'
+          listable: hidden
+          instructions_position: above
+          read_only: false
+          default: false
+      -
+        handle: svg
+        field: common.image
+        config:
+          container: favicons
+          restrict: true
+          localizable: false
+          display: 'Favicon SVG'
+          instructions: 'Het full colour SVG-favicon voor [moderne browsers](https://caniuse.com/link-icon-svg).'
+          width: 50
+          validate:
+            - 'required_if:use_favicons,true'
+          if:
+            use_favicons: 'equals true'
+      -
+        handle: section_colors
+        field:
+          type: section
+          listable: hidden
+          display: Kleuren
+          if:
+            use_favicons: 'equals true'
+          instructions_position: above
+          read_only: false
+      -
+        handle: safari_color
+        field:
+          theme: nano
+          lock_opacity: true
+          default_color_mode: HEXA
+          color_modes:
+            - hex
+          display: Safari
+          type: color
+          icon: color
+          default: '#000000'
+          listable: hidden
+          instructions: 'Het pictogram voor Safari (_mask-icon_) wordt geconverteerd naar een enkele kleur SVG met dit als kleur.'
+          width: 33
+          validate:
+            - 'required_if:use_favicons,true'
+          if:
+            use_favicons: 'equals true'
+          instructions_position: above
+          read_only: false
+      -
+        handle: ios_color
+        field:
+          theme: nano
+          lock_opacity: true
+          default_color_mode: HEXA
+          color_modes:
+            - hex
+          display: iOS
+          type: color
+          icon: color
+          default: '#ffffff'
+          listable: hidden
+          instructions: 'Het pictogram voor iOS (_apple-touch-icon_) gebruikt de full colour SVG met deze kleur als achtergrond.'
+          width: 33
+          validate:
+            - 'required_if:use_favicons,true'
+          if:
+            use_favicons: 'equals true'
+          instructions_position: above
+          read_only: false
+      -
+        handle: section_overrides
+        field:
+          type: section
+          listable: hidden
+          display: Overrides
+          instructions: 'Overschrijf specifieke gegenereerde activa met die van u.'
+          if:
+            use_favicons: 'equals true'
+          instructions_position: above
+          read_only: false
+      -
+        handle: safari_mask_icon
+        field: common.image
+        config:
+          container: favicons
+          restrict: true
+          localizable: false
+          display: 'Safari Mask Icoon'
+          instructions: 'Een enkele kleur en zo plat mogelijke SVG. De kleur die hierboven bij `Safari` is gedefinieerd, wordt gebruikt.'
+          width: 33
+          if:
+            use_favicons: 'equals true'
+      -
+        handle: apple_touch_icon
+        field: common.image
+        config:
+          container: favicons
+          restrict: true
+          localizable: false
+          display: 'Apple touch icoon'
+          instructions: 'Een 180x180 PNG-afbeelding die wordt gebruikt op iOS-apparaten. Wordt gefocust bijgesneden tot deze dimensie.'
+          width: 33
+          if:
+            use_favicons: 'equals true'
+      -
+        handle: android_chrome
+        field: common.image
+        config:
+          container: favicons
+          restrict: true
+          localizable: false
+          display: 'Android Chrome icoon'
+          instructions: 'Een 512x512 PNG-afbeelding die wordt gebruikt op Android-apparaten. Wordt gefocust bijgesneden tot deze dimensie.'
+          width: 33
+          if:
+            use_favicons: 'equals true'

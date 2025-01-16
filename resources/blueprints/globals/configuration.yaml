@@ -1,0 +1,645 @@
+tabs:
+  general:
+    display: Algemeen
+    sections:
+      -
+        display: 'Algemene informatie'
+        fields:
+          -
+            handle: company_name
+            field:
+              type: text
+              display: Naam
+              instructions: 'Naam van het bedrijf of de organisatie'
+          -
+            handle: company_adres
+            field:
+              type: text
+              display: Adres
+              instructions: 'Straat en nummer'
+          -
+            handle: company_zip
+            field:
+              type: text
+              display: 'Postcode en stad'
+              instructions: 'Postcode en stad'
+          -
+            handle: company_phone
+            field:
+              type: text
+              display: Telefoonnummer
+              instructions: 'Gebruikte telefoonnummer op de site'
+          -
+            handle: company_mail
+            field:
+              type: text
+              display: E-mailadres
+              instructions: 'Gebruikt e-mailadres op de site'
+      -
+        display: Copyright
+        instructions: 'Copyright configuratie-opties.'
+        fields:
+          -
+            handle: copyright_since
+            field:
+              placeholder: '2020'
+              input_type: number
+              character_limit: 4
+              prepend: ©
+              default: '2020'
+              display: 'Copyright vanaf'
+              instructions: 'De website voegt ` - huidig_jaar ` toe als ze verschillen.'
+              type: text
+              width: 50
+              validate:
+                - required
+          -
+            handle: copyright_name
+            field:
+              display: 'Copyright naam'
+              type: text
+              instructions: 'Valt terug op de naam van de applicatie.'
+              width: 50
+      -
+        display: Privacyverklaring
+        instructions: 'Configureer een optionele privacyverklaring.'
+        fields:
+          -
+            handle: privacy_statement_type
+            field:
+              options:
+                none: Geen
+                entry: Entry
+                pdf: PDF
+              default: none
+              type: button_group
+              instructions: 'Dit wordt gebruikt in formulieren.'
+              instructions_position: below
+              listable: false
+              localizable: true
+              display: Privacyverklaring
+              width: 50
+          -
+            handle: privacy_statement_asset
+            field: common.image
+            config:
+              localizable: true
+              listable: hidden
+              display: 'Privacyverklaring (PDF)'
+              width: 50
+              if:
+                privacy_statement_type: 'equals pdf'
+              validate:
+                - 'required_if:privacy_statement_type,pdf'
+          -
+            handle: privacy_statement_entry
+            field: common.entry
+            config:
+              localizable: true
+              listable: hidden
+              display: 'Privacyverklaring (entry)'
+              width: 50
+              if:
+                privacy_statement_type: 'equals entry'
+              validate:
+                - 'required_if:privacy_statement_type,entry'
+  header:
+    display: Header
+    sections:
+      -
+        display: Logo
+        fields:
+          -
+            handle: header_logo
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: Afbeelding
+              instructions: 'Logo in de header'
+          -
+            handle: header_logo_mh
+            field:
+              type: integer
+              display: Hoogte
+              instructions: 'Maximale hoogte in pixels voor grote schermen'
+              width: 50
+          -
+            handle: header_logo_mh_mob
+            field:
+              type: integer
+              display: 'Hoogte mobiel'
+              instructions: 'Maximale hoogte in pixels voor mobiel'
+              width: 50
+      -
+        display: Layout
+        fields:
+          -
+            handle: header_height
+            field:
+              type: integer
+              display: 'Hoogte header'
+              instructions: 'Hoogte van de header in pixels'
+              width: 50
+          -
+            handle: header_height_mob
+            field:
+              type: integer
+              display: 'Hoogte header mobiel'
+              instructions: 'Hoogte van de header in pixels voor mobiel'
+              width: 50
+      -
+        display: Kleur
+        fields:
+          -
+            handle: header_bg_c
+            field:
+              default: '#EAEAEA'
+              type: color
+              display: Achtergrond
+              instructions: 'Achtergrond kleur van de header'
+              width: 33
+          -
+            handle: header_b_c
+            field:
+              default: '#EAEAEA'
+              type: color
+              display: Border
+              instructions: 'Border kleur aan de onderkant'
+              width: 33
+          -
+            handle: header_hb_c
+            field:
+              default: '#000064'
+              type: color
+              display: 'Menu knop'
+              instructions: 'Kleur van de hamburger menu knop'
+              width: 33
+          -
+            handle: header_link_c
+            field:
+              default: '#000064'
+              type: color
+              display: 'Header link'
+              instructions: 'Kleur van een link in de header'
+              width: 50
+          -
+            handle: header_link_hc
+            field:
+              default: '#e5007e'
+              type: color
+              display: 'Header link hover'
+              instructions: 'Kleur van een actieve/hover link in de header'
+              width: 50
+          -
+            handle: header_bg_c_menu
+            field:
+              default: '#EAEAEA'
+              type: color
+              display: 'Mobiel menu'
+              instructions: 'Achtergrond kleur van het mobiele menu/dropdown'
+              width: 50
+          -
+            handle: header_link_c_menu
+            field:
+              default: '#000064'
+              type: color
+              display: 'Mobiel menu link'
+              instructions: 'Kleur van de links in het mobiele menu/dropdown'
+              width: 50
+  footer:
+    display: Footer
+    sections:
+      -
+        display: Logo
+        fields:
+          -
+            handle: footer_logo
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: Afbeelding
+              instructions: 'logo in de footer'
+          -
+            handle: footer_logo_mw
+            field:
+              type: integer
+              display: Breedte
+              instructions: 'Maximale breedte in pixels voor grote schermen'
+              width: 50
+          -
+            handle: footer_logo_mw_mob
+            field:
+              type: integer
+              display: 'Breedte mobiel'
+              instructions: 'Maximale breedte in pixels voor mobiel'
+              width: 50
+      -
+        display: Content
+        fields:
+          -
+            handle: footer_content_left
+            field:
+              buttons:
+                - h2
+                - h3
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - quote
+                - anchor
+                - image
+                - table
+                - h4
+              remove_empty_nodes: false
+              type: bard
+              display: 'Content links'
+              instructions: 'Text in het linker gedeelte van de footer'
+          -
+            handle: footer_content_right
+            field:
+              remove_empty_nodes: false
+              type: bard
+              display: 'Content rechts'
+              instructions: 'Text in het rechter gedeelte van de footer'
+      -
+        display: Kleur
+        fields:
+          -
+            handle: footer_bg_c
+            field:
+              default: '#EAEAEA'
+              type: color
+              display: 'Achtergrond kleur'
+              instructions: 'Achtergrond kleur van de footer'
+              width: 33
+          -
+            handle: footer_text_c
+            field:
+              type: color
+              display: 'Text kleur'
+              instructions: 'Kleur van de tekst in de footer'
+              width: 33
+              default: '#222'
+          -
+            handle: footer_text_hc
+            field:
+              swatches:
+                - '#e5007e'
+                - '#222'
+                - '#fff'
+              default: '#efefef'
+              type: color
+              display: 'Text hover kleur'
+              instructions: 'Kleur bij het hoveren van links'
+              width: 33
+      -
+        display: 'Social media'
+        fields:
+          -
+            handle: footer_x
+            field:
+              prepend: 'https://'
+              type: text
+              display: X/Twitter
+              instructions: 'Link naar X/Twitter'
+              width: 50
+          -
+            handle: footer_x_c
+            field:
+              default: '#000064'
+              type: color
+              display: Kleur
+              instructions: 'Kleur van het icoon'
+              width: 25
+          -
+            handle: footer_x_hc
+            field:
+              default: '#e5007e'
+              type: color
+              display: Hover
+              instructions: 'Hover kleur van het icoon'
+              width: 25
+          -
+            handle: footer_fb
+            field:
+              prepend: 'https://'
+              type: text
+              display: Facebook
+              instructions: 'Link naar facebook'
+              width: 50
+          -
+            handle: footer_fb_c
+            field:
+              default: '#000064'
+              type: color
+              display: Kleur
+              instructions: 'Kleur van het icoon'
+              width: 25
+          -
+            handle: footer_fb_hc
+            field:
+              default: '#e5007e'
+              type: color
+              display: Hover
+              instructions: 'Hover kleur van het icoon'
+              width: 25
+          -
+            handle: footer_ig
+            field:
+              prepend: 'https://'
+              type: text
+              display: Instagram
+              instructions: 'Link naar Instagram'
+              width: 50
+          -
+            handle: footer_ig_c
+            field:
+              default: '#000064'
+              type: color
+              display: Kleur
+              instructions: 'Kleur van het icoon'
+              width: 25
+          -
+            handle: footer_ig_hc
+            field:
+              default: '#e5007e'
+              type: color
+              display: Hover
+              instructions: 'Hover kleur van het icoon'
+              width: 25
+          -
+            handle: footer_yt
+            field:
+              prepend: 'https://'
+              type: text
+              display: Youtube
+              instructions: 'Link naar Youtube'
+              width: 50
+          -
+            handle: footer_yt_c
+            field:
+              default: '#000064'
+              type: color
+              display: Kleur
+              instructions: 'Kleur van het icoon'
+              width: 25
+          -
+            handle: footer_yt_hc
+            field:
+              default: '#e5007e'
+              type: color
+              display: Hover
+              instructions: 'Hover kleur van het icoon'
+              width: 25
+  formulieren:
+    display: Formulieren
+    sections:
+      -
+        display: Kleur
+        fields:
+          -
+            handle: form_hc
+            field:
+              default: '#e5007e'
+              type: color
+              display: 'Hover/focus kleur'
+              instructions: 'Hover/focus kleur op input velden'
+              width: 33
+          -
+            handle: form_ec
+            field:
+              swatches:
+                - '#ff0000'
+              default: '#ff0000'
+              type: color
+              display: 'Error kleur'
+              instructions: 'Error kleur bij validatie'
+              width: 33
+          -
+            handle: form_sc
+            field:
+              default: '#428959'
+              type: color
+              display: 'Succes color'
+              width: 33
+      -
+        display: Logo
+        fields:
+          -
+            handle: form_logo
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: Logo
+              instructions: 'Logo in de email'
+  typography:
+    display: Typografie
+    sections:
+      -
+        display: Lettertype
+        fields:
+          -
+            handle: font_import
+            field:
+              prepend: 'https://'
+              type: text
+              display: 'Font @import link'
+              instructions: 'Plaatst hier de @font import link. Bijvoorbeeld: fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i&display=swap (google) of use.typekit.net/eks3ypz.css (adobe)'
+          -
+            handle: font_family_body
+            field:
+              type: text
+              display: 'Font-family (body)'
+              instructions: 'Plaats hier de font-family voor de body tekst. Bijvoorbeeld: Raleway, sans-serif'
+              width: 50
+          -
+            handle: font_family_head
+            field:
+              type: text
+              display: 'Font family (head)'
+              instructions: 'Plaats hier de font-family voor de headers. Bijvoorbeeld: Raleway, sans-serif'
+              width: 50
+      -
+        display: 'Font size'
+        instructions: 'Alle font sizes in pixels'
+        fields:
+          -
+            handle: font_h1
+            field:
+              type: integer
+              display: 'H1 size'
+              width: 50
+          -
+            handle: font_h1_m
+            field:
+              type: integer
+              display: 'H1 size (mobiel)'
+              width: 50
+          -
+            handle: font_h2
+            field:
+              type: integer
+              display: 'H2 size'
+              width: 50
+          -
+            handle: font_h2_m
+            field:
+              type: integer
+              display: 'H2 size (mobiel)'
+              width: 50
+          -
+            handle: font_h3
+            field:
+              type: integer
+              display: 'H3 size'
+              width: 50
+          -
+            handle: font_h3_m
+            field:
+              type: integer
+              display: 'H3 size (mobiel)'
+              width: 50
+          -
+            handle: font_h4
+            field:
+              type: integer
+              display: 'H4 size'
+              width: 50
+          -
+            handle: font_h4_m
+            field:
+              type: integer
+              display: 'H4 size (mobiel)'
+              width: 50
+          -
+            handle: font_body
+            field:
+              type: integer
+              display: 'Body size'
+              width: 50
+          -
+            handle: font_body_m
+            field:
+              type: integer
+              display: 'Body size (mobiel)'
+              width: 50
+      -
+        display: Kleuren
+        fields:
+          -
+            handle: font_body_c
+            field:
+              default: '#222'
+              type: color
+              display: 'Tekst kleur'
+              instructions: 'Normale tekst kleur'
+              width: 25
+          -
+            handle: font_head_c
+            field:
+              default: '#222'
+              type: color
+              display: 'Kop kleur'
+              instructions: 'Normale kleur koppen'
+              width: 25
+          -
+            handle: font_link_c
+            field:
+              default: '#222'
+              type: color
+              display: 'Link kleur'
+              instructions: 'Normale Link kleur'
+              width: 25
+          -
+            handle: font_link_hc
+            field:
+              default: '#e5007e'
+              type: color
+              display: 'Hover kleur'
+              instructions: 'Link hover/focus kleur'
+              width: 25
+      -
+        display: Overig
+        fields:
+          -
+            handle: font_underline_h
+            field:
+              type: toggle
+              display: 'Link hover underline'
+              instructions: 'Links onderstrepen bij hover/active'
+  colors:
+    display: Kleuren
+    sections:
+      -
+        display: Cookiebanner
+        fields:
+          -
+            handle: cookie_primary_color
+            field:
+              default: '#222'
+              type: color
+              display: 'Primaire kleur'
+              width: 50
+          -
+            handle: cookie_toggle_color
+            field:
+              default: '#222'
+              type: color
+              display: 'Toggle kleur'
+              width: 50
+  geavanceerd:
+    display: Geavanceerd
+    sections:
+      -
+        display: Instellingen
+        fields:
+          -
+            handle: html_root_size
+            field:
+              type: integer
+              display: 'HTML Root size'
+          -
+            handle: max_width
+            field:
+              default: '1512'
+              type: integer
+              display: 'Max width'
+              instructions: 'Maximale breedte van de container in px'
+              width: 50
+          -
+            handle: padding
+            field:
+              default: '24'
+              type: integer
+              display: Padding
+              instructions: 'Padding van de container in PX'
+              width: 50
+          -
+            handle: gutters_xs
+            field:
+              default: '16'
+              type: integer
+              display: 'Gutters XS'
+              instructions: 'Tussenruimte van de blokken op mobiel in px.'
+              width: 33
+          -
+            handle: gutters_sm
+            field:
+              default: '16'
+              type: integer
+              display: 'Gutters SM'
+              instructions: 'Tussenruimte van de blokken op tablet in px.'
+              width: 33
+          -
+            handle: gutters_md
+            field:
+              default: '32'
+              type: integer
+              display: 'Gutters MD'
+              instructions: 'Tussenruimte van de blokken op desktop in px.'
+              width: 33

@@ -1,0 +1,44 @@
+{{#
+	@name Table
+	@desc The table component for sizeable content tables.
+    @set page.article.table
+#}}
+
+<div class="block__table">
+    <table class="table">
+        {{ table }}
+            {{ if first && first_row_headers }}
+                <thead>
+                    <tr>
+                        {{ cells }}
+                            <th class="table__head">{{ value }}</th>
+                        {{ /cells }}
+                    </tr>
+                </thead>
+                <tbody>
+            {{ /if }}
+
+            {{ if !first && first_row_headers || !first_row_headers }}
+                {{ if first }}
+                    <tbody>
+                {{ /if }}
+
+                <tr>
+                    {{ cells }}
+                        {{ if first && first_column_headers }}
+                            <th class="table__head>{{ value }}</th>
+                        {{ else }}
+                            <td class="table__cell">{{ value }}</td>
+                        {{ /if }}
+                    {{ /cells }}
+                </tr>
+
+                {{ if last }}
+                    </tbody>
+                {{ /if }}
+            {{ /if }}
+        {{ /table }}
+    </table>
+
+    {{ partial:typography/caption }}
+</div>

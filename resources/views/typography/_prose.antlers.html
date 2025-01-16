@@ -1,0 +1,14 @@
+{{#
+	@name Prose
+	@desc The typography prose partial to render a prose object with `class` attribute.
+#}}
+
+<!-- /typography/_prose.antlers.html -->
+<{{ as or 'article' }}
+	class="
+		{{ class }}
+	"
+>
+	{{ slot }}
+</{{ as or 'article' }}>
+<!-- End: /typography/_prose.antlers.html -->

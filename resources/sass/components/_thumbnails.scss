@@ -1,0 +1,95 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+.block--thumbnails,
+.block--collection {
+
+    .thumbnails {
+        // Grid
+        &__grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: var(--gutters-md-negative);
+            margin-right: var(--gutters-md-negative);
+            margin-bottom: calc(var(--gutters-md-negative) * 2);
+            @include fixed {
+                margin-left: var(--gutters-sm-negative);
+                margin-right: var(--gutters-sm-negative);
+                margin-bottom: calc(var(--gutters-sm-negative) * 2);
+            }
+            @include mobile {
+                margin-left: var(--gutters-xs-negative);
+                margin-right: var(--gutters-xs-negative);
+                margin-bottom: calc(var(--gutters-xs-negative) * 2);
+            }
+        }
+
+        // Item
+        &__item {
+            width: 25%;
+            height: 18.75rem;
+            padding-left:var(--gutters-md);
+            padding-right: var(--gutters-md);
+            margin-bottom: calc(var(--gutters-md) * 2);
+            @include fixed {
+                width: 50%;
+                padding-right: var(--gutters-sm);
+                padding-right: var(--gutters-sm);
+                margin-bottom: calc(var(--gutters-sm) * 2);
+            }
+            @include mobile {
+                width: 100%;
+                padding-right: var(--gutters-xs);
+                padding-right: var(--gutters-xs);
+                margin-bottom: calc(var(--gutters-xs) * 2);
+            }
+        }
+
+        &__inner {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        &__link {
+            display: block;
+            height: 100%;
+
+            &:hover {
+                .thumbnails__media {
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        &__nolink {
+            height: 100%;
+        }
+
+        &__media {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform $default-timing ease-in-out;
+        }
+
+        &__overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+        &__text {
+            color: #fff;
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            font-weight: 900;
+            font-size: 2rem;
+            letter-spacing: 0.05em;
+            max-width: calc(100% - 1rem);
+        }
+    }
+}

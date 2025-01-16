@@ -1,0 +1,36 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              type: text
+              display: Naam
+              instructions: 'Uw naam'
+              width: 50
+          -
+            handle: email
+            field:
+              input_type: email
+              type: text
+              display: E-mailadres
+              instructions: 'Uw email'
+              width: 50
+          -
+            handle: sportperson
+            field:
+              type: text
+              display: 'Sport persoon'
+              instructions: 'Volledige naam sportpersoon'
+              width: 50
+          -
+            handle: sportperson_email
+            field:
+              input_type: email
+              type: text
+              display: 'Sport persoon email'
+              instructions: 'E-mailadres van sportpersoon'
+              width: 50

@@ -1,0 +1,17 @@
+{{#
+	@name Error: 404
+	@desc The 404 error template.
+#}}
+
+{{# Redirect if current_url is in the Redirects global. #}}
+{{ redirects:redirects | where('url_old', {current_uri}) }}
+    {{ redirect to="{entry:url}" response="{response}" }}
+{{ /redirects:redirects }}
+
+<main id="content" class="page-404">
+    <div class="page-404__content">
+        <h1 class="page-404__title">404</h1>
+        <p class="page-404__text">We hebben de pagina helaas niet kunnen vinden, is de URL correct?</p>
+        <a class="btn btn--404 btn--secondary" href="/">Naar de homepage</a>
+    </div>
+</main>

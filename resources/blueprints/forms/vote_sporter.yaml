@@ -1,0 +1,33 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              type: text
+              display: Naam
+              instructions: 'Uw naam'
+              width: 50
+              validate:
+                - required
+          -
+            handle: email
+            field:
+              type: text
+              display: E-mailadres
+              instructions: 'Uw e-mailadres'
+              width: 50
+              input_type: email
+              validate:
+                - required
+          -
+            handle: sportperson
+            field:
+              type: text
+              display: 'Sport(st)er van het jaar'
+              instructions: 'Uw sport(st)er van het jaar'
+              validate:
+                - required

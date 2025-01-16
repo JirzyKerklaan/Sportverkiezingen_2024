@@ -1,0 +1,49 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+// Image only slider
+.splide {
+    &--img {
+        .splide__slide, picture {
+            display: flex;
+        }
+        .splide__media, picture {
+            object-fit: cover;
+        }
+    }
+}
+
+// Banner slider
+.block__banner {
+    max-width: 100%;
+    .splide__slide {
+        flex-shrink: unset;
+        position: relative;
+        width: 100%;
+        // Cant go bigger then max height
+        max-height: calc(100dvh - var(--header-height));
+    }
+    .splide__overlay {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .splide__content {
+        * { margin: 0; }
+    }
+    .splide__image,
+    .splide__media {
+        height: 100%;
+        object-fit: cover;
+    }
+    // Initialized
+    &.splide {
+        .splide__slide {
+            flex-shrink: 0;
+        }
+    }
+}

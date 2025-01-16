@@ -1,0 +1,33 @@
+@use '../abstracts/_abstracts-dir' as *;
+
+#page-detail {
+    padding-bottom: 5rem;
+
+    .detail__intro {
+        .breadcrumbs {
+            padding-top: calc($default-padding-top / 2);
+            padding-bottom: calc($default-padding-bottom / 2);
+            ol {
+                padding: 0;
+                margin: 0;
+            }
+            li span {
+                margin-right: 0.5rem;
+            }
+        }
+        &__cover {
+            // Make sure to set the glide dimensions to make use of focal point!
+            width: 100%;
+            height: auto;
+        }
+        &__date {
+            margin-top: 1rem;
+        }
+        &__title {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+    }
+
+}
